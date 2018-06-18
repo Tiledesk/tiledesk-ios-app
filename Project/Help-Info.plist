@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>projectId</key>
+	<string>5b22a6cf33d09700149a6db2</string>
+	<key>host</key>
+	<string>https://chat21-api-nodejs.herokuapp.com</string>
+	<key>departments-service</key>
+	<string>/%@/departments</string>
+</dict>
+</plist>
