@@ -3,8 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>app-name</key>
-	<string>Chat21</string>
+	<string>Tiledesk</string>
 	<key>chat-support</key>
-	<true/>
+	<false/>
+	<key>host</key>
+	<string>https://chat21-api-nodejs.herokuapp.com</string>
+	<key>auth-service</key>
+	<string>/firebase/auth/signin</string>
 </dict>
 </plist>

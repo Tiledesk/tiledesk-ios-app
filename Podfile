@@ -1,10 +1,10 @@
 platform :ios, '10.0'
 
-target 'chat21' do
+target 'tiledesk' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  use_frameworks!
+  #use_frameworks!
 
-  # Pods for chat21
+  # Pods for tiledesk
   pod 'NYTPhotoViewer'
   pod 'KeychainItemWrapper'
   pod 'Firebase/Core'
