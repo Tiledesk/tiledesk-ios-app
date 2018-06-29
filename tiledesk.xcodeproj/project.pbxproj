@@ -136,13 +136,13 @@
 		B253C73220CFB3E300F0EB20 /* Help.strings in Resources */ = {isa = PBXBuildFile; fileRef = B253C73420CFB3E300F0EB20 /* Help.strings */; };
 		B253C73920CFEAF400F0EB20 /* HelpAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B253C73820CFEAF400F0EB20 /* HelpAction.m */; };
 		B2821A1A20D95F5C0060B980 /* TiledeskAppService.m in Sources */ = {isa = PBXBuildFile; fileRef = B2821A1920D95F5C0060B980 /* TiledeskAppService.m */; };
+		B2821A1C20DACCDC0060B980 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2821A1B20DACCDC0060B980 /* Media.xcassets */; };
 		B2A4C0531FE7D7A600AED2EE /* HelloUserProfileTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A4C0521FE7D7A600AED2EE /* HelloUserProfileTVC.m */; };
 		B2AA0A2720D9156400B6B8B8 /* tiledesk-logo-small.png in Resources */ = {isa = PBXBuildFile; fileRef = B2AA0A2620D9156300B6B8B8 /* tiledesk-logo-small.png */; };
 		B2BC945F1F1F68EF000DDF52 /* HelloAuthTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC945E1F1F68EF000DDF52 /* HelloAuthTVC.m */; };
 		B2BC94621F1FCE04000DDF52 /* HelloMyProfileTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC94611F1FCE04000DDF52 /* HelloMyProfileTVC.m */; };
 		B2C7CB9D1FDAFD1400F2EFFE /* HelloVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C7CB9B1FDAFD1300F2EFFE /* HelloVC.m */; };
 		B2CE2F411F1CF60C002E2150 /* Tiledesk.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2CE2F401F1CF60C002E2150 /* Tiledesk.storyboard */; };
-		B2DC48F81FBB7EFC00698CE7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DC48F71FBB7EFC00698CE7 /* Media.xcassets */; };
 		BFBBC2C01B1ED7E30028EA4F /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFBBC2BF1B1ED7E30028EA4F /* settings.plist */; };
 		BFBBC2E71B1EDCC90028EA4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFBBC2E91B1EDCC90028EA4F /* Localizable.strings */; };
 		BFBFD3951AEA54DA00657874 /* HelloAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBFD3921AEA54DA00657874 /* HelloAppDelegate.m */; };
@@ -387,6 +387,7 @@
 		B253C73820CFEAF400F0EB20 /* HelpAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpAction.m; sourceTree = "<group>"; };
 		B2821A1820D95F5C0060B980 /* TiledeskAppService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TiledeskAppService.h; sourceTree = "<group>"; };
 		B2821A1920D95F5C0060B980 /* TiledeskAppService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TiledeskAppService.m; sourceTree = "<group>"; };
+		B2821A1B20DACCDC0060B980 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B2A4C0511FE7D7A600AED2EE /* HelloUserProfileTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloUserProfileTVC.h; sourceTree = "<group>"; };
 		B2A4C0521FE7D7A600AED2EE /* HelloUserProfileTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloUserProfileTVC.m; sourceTree = "<group>"; };
 		B2AA0A2620D9156300B6B8B8 /* tiledesk-logo-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiledesk-logo-small.png"; sourceTree = "<group>"; };
@@ -398,7 +399,6 @@
 		B2C7CB9B1FDAFD1300F2EFFE /* HelloVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloVC.m; sourceTree = "<group>"; };
 		B2C7CB9C1FDAFD1300F2EFFE /* HelloVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloVC.h; sourceTree = "<group>"; };
 		B2CE2F401F1CF60C002E2150 /* Tiledesk.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tiledesk.storyboard; sourceTree = "<group>"; };
-		B2DC48F71FBB7EFC00698CE7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		BFBBC2BF1B1ED7E30028EA4F /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		BFBBC2EA1B1EDCD60028EA4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFBBC2EB1B1EDCD80028EA4F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -608,61 +608,61 @@
 		B2151B7720BC6C1A005B397B /* view */ = {
 			isa = PBXGroup;
 			children = (
-				B2151B7820BC6C1A005B397B /* ChatMessagesTVC.m */,
-				B2151B7920BC6C1A005B397B /* ChatMessagesVC.m */,
-				B2151B7A20BC6C1A005B397B /* ChatCreateGroupVC.m */,
-				B2151B7B20BC6C1A005B397B /* ChatInfoMessageTVC.m */,
-				B2151B7C20BC6C1A005B397B /* ChatChangeGroupNameVC.m */,
-				B2151B7D20BC6C1A005B397B /* ChatMiniBrowserVC.m */,
-				B2151B7E20BC6C1A005B397B /* ChatTextMessageLeftCell.m */,
-				B2151B7F20BC6C1A005B397B /* ChatMessageCell.h */,
-				B2151B8020BC6C1A005B397B /* ChatTitleVC.m */,
-				B2151B8120BC6C1A005B397B /* ChatTextMessageRightCell.m */,
-				B2151B8220BC6C1A005B397B /* ChatInfoMessageCell.h */,
-				B2151B8320BC6C1A005B397B /* ChatImagePreviewVC.h */,
-				B2151B8420BC6C1A005B397B /* NotificationAlertVC.h */,
-				B2151B8520BC6C1A005B397B /* UIView+Property.m */,
-				B2151B8620BC6C1A005B397B /* ChatGroupInfoVC.h */,
-				B2151B8720BC6C1A005B397B /* ChatSelectGroupMembersLocal.m */,
-				B2151B8820BC6C1A005B397B /* ChatNYTPhoto.h */,
-				B2151B8920BC6C1A005B397B /* ChatInfoMessageAttributesTVC.m */,
-				B2151B8A20BC6C1A005B397B /* ChatStatusTitle.h */,
-				B2151B8B20BC6C1A005B397B /* ChatSelectGroupLocalTVC.m */,
-				B2151B8C20BC6C1A005B397B /* ChatImageMessageRightCell.h */,
-				B2151B8D20BC6C1A005B397B /* ChatSelectUserLocalVC.m */,
-				B2151B8E20BC6C1A005B397B /* NotificationAlertView.h */,
-				B2151B8F20BC6C1A005B397B /* ChatImageMessageCell.h */,
-				B2151B9020BC6C1A005B397B /* ChatGroupMembersVC.m */,
-				B2151B9120BC6C1A005B397B /* ChatConversationsVC.m */,
-				B2151B9220BC6C1A005B397B /* ChatImageMessageLeftCell.m */,
-				B2151B9320BC6C1A005B397B /* ChatInfoMessageCell.m */,
-				B2151B9420BC6C1A005B397B /* ChatTextMessageRightCell.h */,
-				B2151B9520BC6C1A005B397B /* ChatTitleVC.h */,
-				B2151B9620BC6C1A005B397B /* ChatTextMessageLeftCell.h */,
-				B2151B9720BC6C1A005B397B /* ChatMessageCell.m */,
-				B2151B9820BC6C1A005B397B /* ChatMiniBrowserVC.h */,
 				B2151B9920BC6C1A005B397B /* ChatChangeGroupNameVC.h */,
-				B2151B9A20BC6C1A005B397B /* ChatInfoMessageTVC.h */,
-				B2151B9B20BC6C1A005B397B /* ChatCreateGroupVC.h */,
-				B2151B9C20BC6C1A005B397B /* ChatMessagesVC.h */,
-				B2151B9D20BC6C1A005B397B /* ChatMessagesTVC.h */,
-				B2151B9E20BC6C1A005B397B /* ChatSelectGroupLocalTVC.h */,
-				B2151B9F20BC6C1A005B397B /* ChatInfoMessageAttributesTVC.h */,
-				B2151BA020BC6C1A005B397B /* ChatStatusTitle.m */,
-				B2151BA120BC6C1A005B397B /* ChatNYTPhoto.m */,
-				B2151BA220BC6C1A005B397B /* ChatSelectGroupMembersLocal.h */,
-				B2151BA320BC6C1A005B397B /* ChatModalCallerDelegate.h */,
-				B2151BA420BC6C1A005B397B /* ChatGroupInfoVC.m */,
-				B2151BA520BC6C1A005B397B /* UIView+Property.h */,
-				B2151BA620BC6C1A005B397B /* NotificationAlertVC.m */,
-				B2151BA720BC6C1A005B397B /* ChatImagePreviewVC.m */,
-				B2151BA820BC6C1A005B397B /* ChatGroupMembersVC.h */,
-				B2151BA920BC6C1A005B397B /* ChatImageMessageCell.m */,
-				B2151BAA20BC6C1A005B397B /* NotificationAlertView.m */,
-				B2151BAB20BC6C1A005B397B /* ChatSelectUserLocalVC.h */,
-				B2151BAC20BC6C1A005B397B /* ChatImageMessageRightCell.m */,
-				B2151BAD20BC6C1A005B397B /* ChatImageMessageLeftCell.h */,
+				B2151B7C20BC6C1A005B397B /* ChatChangeGroupNameVC.m */,
 				B2151BAE20BC6C1A005B397B /* ChatConversationsVC.h */,
+				B2151B9120BC6C1A005B397B /* ChatConversationsVC.m */,
+				B2151B9B20BC6C1A005B397B /* ChatCreateGroupVC.h */,
+				B2151B7A20BC6C1A005B397B /* ChatCreateGroupVC.m */,
+				B2151B8620BC6C1A005B397B /* ChatGroupInfoVC.h */,
+				B2151BA420BC6C1A005B397B /* ChatGroupInfoVC.m */,
+				B2151BA820BC6C1A005B397B /* ChatGroupMembersVC.h */,
+				B2151B9020BC6C1A005B397B /* ChatGroupMembersVC.m */,
+				B2151B8F20BC6C1A005B397B /* ChatImageMessageCell.h */,
+				B2151BA920BC6C1A005B397B /* ChatImageMessageCell.m */,
+				B2151BAD20BC6C1A005B397B /* ChatImageMessageLeftCell.h */,
+				B2151B9220BC6C1A005B397B /* ChatImageMessageLeftCell.m */,
+				B2151B8C20BC6C1A005B397B /* ChatImageMessageRightCell.h */,
+				B2151BAC20BC6C1A005B397B /* ChatImageMessageRightCell.m */,
+				B2151B8320BC6C1A005B397B /* ChatImagePreviewVC.h */,
+				B2151BA720BC6C1A005B397B /* ChatImagePreviewVC.m */,
+				B2151B9F20BC6C1A005B397B /* ChatInfoMessageAttributesTVC.h */,
+				B2151B8920BC6C1A005B397B /* ChatInfoMessageAttributesTVC.m */,
+				B2151B8220BC6C1A005B397B /* ChatInfoMessageCell.h */,
+				B2151B9320BC6C1A005B397B /* ChatInfoMessageCell.m */,
+				B2151B9A20BC6C1A005B397B /* ChatInfoMessageTVC.h */,
+				B2151B7B20BC6C1A005B397B /* ChatInfoMessageTVC.m */,
+				B2151B7F20BC6C1A005B397B /* ChatMessageCell.h */,
+				B2151B9720BC6C1A005B397B /* ChatMessageCell.m */,
+				B2151B9D20BC6C1A005B397B /* ChatMessagesTVC.h */,
+				B2151B7820BC6C1A005B397B /* ChatMessagesTVC.m */,
+				B2151B9C20BC6C1A005B397B /* ChatMessagesVC.h */,
+				B2151B7920BC6C1A005B397B /* ChatMessagesVC.m */,
+				B2151B9820BC6C1A005B397B /* ChatMiniBrowserVC.h */,
+				B2151B7D20BC6C1A005B397B /* ChatMiniBrowserVC.m */,
+				B2151BA320BC6C1A005B397B /* ChatModalCallerDelegate.h */,
+				B2151B8820BC6C1A005B397B /* ChatNYTPhoto.h */,
+				B2151BA120BC6C1A005B397B /* ChatNYTPhoto.m */,
+				B2151B9E20BC6C1A005B397B /* ChatSelectGroupLocalTVC.h */,
+				B2151B8B20BC6C1A005B397B /* ChatSelectGroupLocalTVC.m */,
+				B2151BA220BC6C1A005B397B /* ChatSelectGroupMembersLocal.h */,
+				B2151B8720BC6C1A005B397B /* ChatSelectGroupMembersLocal.m */,
+				B2151BAB20BC6C1A005B397B /* ChatSelectUserLocalVC.h */,
+				B2151B8D20BC6C1A005B397B /* ChatSelectUserLocalVC.m */,
+				B2151B8A20BC6C1A005B397B /* ChatStatusTitle.h */,
+				B2151BA020BC6C1A005B397B /* ChatStatusTitle.m */,
+				B2151B9620BC6C1A005B397B /* ChatTextMessageLeftCell.h */,
+				B2151B7E20BC6C1A005B397B /* ChatTextMessageLeftCell.m */,
+				B2151B9420BC6C1A005B397B /* ChatTextMessageRightCell.h */,
+				B2151B8120BC6C1A005B397B /* ChatTextMessageRightCell.m */,
+				B2151B9520BC6C1A005B397B /* ChatTitleVC.h */,
+				B2151B8020BC6C1A005B397B /* ChatTitleVC.m */,
+				B2151B8420BC6C1A005B397B /* NotificationAlertVC.h */,
+				B2151BA620BC6C1A005B397B /* NotificationAlertVC.m */,
+				B2151B8E20BC6C1A005B397B /* NotificationAlertView.h */,
+				B2151BAA20BC6C1A005B397B /* NotificationAlertView.m */,
+				B2151BA520BC6C1A005B397B /* UIView+Property.h */,
+				B2151B8520BC6C1A005B397B /* UIView+Property.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -847,7 +847,7 @@
 			children = (
 				B23CD7F820C526A200A0B3F0 /* TildeskWidget */,
 				B2ABAE7E202228C200D6265A /* Tiledesk.entitlements */,
-				B2DC48F71FBB7EFC00698CE7 /* Media.xcassets */,
+				B2821A1B20DACCDC0060B980 /* Media.xcassets */,
 				B2151BB020BC6C1A005B397B /* Chat21Core */,
 				B2151B3520BC6C1A005B397B /* Chat21UI */,
 				B2CE2F391F19314E002E2150 /* Tiledesk */,
@@ -1026,7 +1026,6 @@
 				B2151BF520BC6C1A005B397B /* sendbutton.png in Resources */,
 				B2151BF920BC6C1A005B397B /* exiticonbutton.png in Resources */,
 				B244170E202A2384001E95F8 /* GoogleService-Info.plist in Resources */,
-				B2DC48F81FBB7EFC00698CE7 /* Media.xcassets in Resources */,
 				B2151C0420BC6C1A005B397B /* icon_light_altro@2x.png in Resources */,
 				B2151BF620BC6C1A005B397B /* avatar.png in Resources */,
 				B2151C1920BC6C1A005B397B /* Chat.storyboard in Resources */,
@@ -1070,6 +1069,7 @@
 				B2151C0E20BC6C1A005B397B /* ic_linear_support_gray_01.png in Resources */,
 				B253C73220CFB3E300F0EB20 /* Help.strings in Resources */,
 				B23AE8EB1F278E8800BEB4B8 /* ic_linear_file.png in Resources */,
+				B2821A1C20DACCDC0060B980 /* Media.xcassets in Resources */,
 				B20D93291D6C95A700ADC264 /* MainStoryboard.storyboard in Resources */,
 				B2151BFF20BC6C1A005B397B /* icon_light_chat@2x.png in Resources */,
 				B2151C1820BC6C1A005B397B /* inline.caf in Resources */,
@@ -1359,7 +1359,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = it.frontiere21.tiledesk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiledesk.app;
 				PRODUCT_NAME = Tiledesk;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
@@ -1398,7 +1398,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = it.frontiere21.tiledesk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiledesk.app;
 				PRODUCT_NAME = Tiledesk;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";

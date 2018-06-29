@@ -32,21 +32,26 @@
 
 +(void)loginWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(HelloUser *user, NSError *))callback {
     [TiledeskAppService loginForFirebaseTokenWithEmail:email password:password completion:^(NSString *token, NSError *error) {
-        [ChatAuth authWithCustomToken:token completion:^(ChatUser *user, NSError *error) {
-            if (error) {
-                NSLog(@"Authentication error. %@", error);
-                callback(nil, error);
-            }
-            else {
-                NSLog(@"Authentication success.");
-                HelloUser *signedUser = [[HelloUser alloc] init];
-                signedUser.userid = user.userId;
-                signedUser.username = user.email;
-                signedUser.email = user.email;
-                signedUser.password = password;
-                callback(signedUser, nil);
-            }
-        }];
+        if (error) {
+            callback(nil, error);
+        }
+        else {
+            [ChatAuth authWithCustomToken:token completion:^(ChatUser *user, NSError *error) {
+                if (error) {
+                    NSLog(@"Authentication error. %@", error);
+                    callback(nil, error);
+                }
+                else {
+                    NSLog(@"Authentication success.");
+                    HelloUser *signedUser = [[HelloUser alloc] init];
+                    signedUser.userid = user.userId;
+                    signedUser.username = user.email;
+                    signedUser.email = user.email;
+                    signedUser.password = password;
+                    callback(signedUser, nil);
+                }
+            }];
+        }
     }];
 }
 
@@ -54,7 +59,7 @@
     NSString *auth_url = [TiledeskAppService authService];
     NSLog(@"CUSTOM AUTH URL: %@", auth_url);
     NSLog(@"email: %@", email);
-    NSLog(@"pwd: %@", password);
+//    NSLog(@"pwd: %@", password);
     NSDictionary* dict = @{
                            @"email": email,
                            @"password": password
@@ -96,7 +101,7 @@
         return nil;
     } else {
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        NSLog(@"JSON String: %@", jsonString);
+//        NSLog(@"JSON String: %@", jsonString);
         return jsonData;
     }
 }

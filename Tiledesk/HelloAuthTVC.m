@@ -147,7 +147,7 @@
             [self showAlert:@"Authentication error."];
         }
         else {
-            NSLog(@"Authentication success. user.id: %@, user.email: %@, user.password: %@", signedUser.userid, signedUser.email, signedUser.password);
+            NSLog(@"Authentication success. user.id: %@, user.email: %@, user.password: ****", signedUser.userid, signedUser.email);
 //            HelloUser *signedUser = [[HelloUser alloc] init];
 //            signedUser.userid = fir_user.uid;
 //            signedUser.username = fir_user.email;
@@ -168,6 +168,7 @@
                     signedUser.firstName = user.firstname;
                     signedUser.lastName = user.lastname;
                     [context signin:signedUser];
+                    [weakSelf hideWaiting];
                     [self initChatAndCloseView:weakSelf];
                 }
                 else {
@@ -175,6 +176,7 @@
                         signedUser.firstName = user.firstname;
                         signedUser.lastName = user.lastname;
                         [context signin:signedUser];
+                        [weakSelf hideWaiting];
                         [self initChatAndCloseView:weakSelf];
                     }];
                 }

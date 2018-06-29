@@ -42,7 +42,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 2) { // cella supporto
+    if (indexPath.row == 4) { // cella supporto
         if (![HelpFacade sharedInstance].supportEnabled) {
             return 0;
         }
