@@ -52,14 +52,14 @@
 }
 
 - (IBAction)logoutAction:(id)sender {
-    NSLog(@"Logout");
+    NSLog(@"Logout action");
     UIAlertController * view =   [UIAlertController
                                   alertControllerWithTitle:nil
-                                  message:@"Vuoi uscire?"
+                                  message:NSLocalizedString(@"Want you exit", nil)
                                   preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction* logout = [UIAlertAction
-                             actionWithTitle:@"Si"
+                             actionWithTitle:NSLocalizedString(@"Yes", nil)
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action)
                              {
@@ -68,8 +68,8 @@
                              }];
     
     UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"Annulla"
-                             style:UIAlertActionStyleDefault
+                             actionWithTitle:NSLocalizedString(@"Cancel", nil)
+                             style:UIAlertActionStyleCancel
                              handler:^(UIAlertAction * action)
                              {
                                  NSLog(@"action canceled");

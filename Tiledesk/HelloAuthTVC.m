@@ -183,50 +183,6 @@
             }];
         }
     }];
-    
-//    [HelloChatUtil firebaseAuthEmail:email password:password completion:^(FIRUser *fir_user, NSError *error) {
-//        if (error) {
-//            NSLog(@"Firebase auth error: %@", error);
-//            weakSelf.loginButton.enabled = true;
-//            [weakSelf hideWaiting];
-//            [self showAlert:@"Authentication error."];
-//        }
-//        else {
-//            NSLog(@"Firebase auth ok.");
-//
-//            HelloUser *signedUser = [[HelloUser alloc] init];
-//            signedUser.userid = fir_user.uid;
-//            signedUser.username = fir_user.email;
-//            signedUser.email = email;
-//            signedUser.password = password;
-//
-//            // store user info for next login.
-//            // REMOVE ON PRODUCTION. HERE JUST TO ACCELERATE DEVELOPMENT
-//            NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
-//
-//            [userPreferences setObject:password forKey:@"stored_password"];
-//            [userPreferences setObject:email forKey:@"stored_username"];
-//            [userPreferences synchronize];
-//
-//            ChatManager *chatm = [ChatManager getInstance];
-//            [chatm getContactLocalDB:signedUser.userid withCompletion:^(ChatUser *user) {
-//                if (user) {
-//                    signedUser.firstName = user.firstname;
-//                    signedUser.lastName = user.lastname;
-//                    [context signin:signedUser];
-//                    [self initChatAndCloseView:weakSelf];
-//                }
-//                else {
-//                    [chatm getUserInfoRemote:signedUser.userid withCompletion:^(ChatUser *user) {
-//                        signedUser.firstName = user.firstname;
-//                        signedUser.lastName = user.lastname;
-//                        [context signin:signedUser];
-//                        [self initChatAndCloseView:weakSelf];
-//                    }];
-//                }
-//            }];
-//        }
-//    }];
 }
 
 -(void)initChatAndCloseView:(HelloAuthTVC *)weakSelf {

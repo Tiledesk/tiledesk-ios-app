@@ -10,6 +10,8 @@
 #import "ChatUser.h"
 #import "ChatAuth.h"
 #import "HelloUser.h"
+#import "ChatConversation.h"
+#import "ChatManager.h"
 
 @implementation TiledeskAppService
 
@@ -28,6 +30,20 @@
     NSString *service = [NSString stringWithFormat:@"%@%@", host, authService];
     NSLog(@"auth service url: %@", service);
     return service;
+}
+
++(NSString *)archiveConversationService:(NSString *)conversationId {
+    // https://us-central1-chat-v2-dev.cloudfunctions.net/api/tilechat/conversations/support-group-LGdXjl_T98q_Kz3ycdJ
+    NSString *tenant = [ChatManager getInstance].tenant;
+    NSString *url = [[NSString alloc] initWithFormat:@"https://us-central1-chat-v2-dev.cloudfunctions.net/api/%@/conversations/%@", tenant, conversationId];
+    return url;
+}
+
++(NSString *)archiveAndCloseSupportConversationService:(NSString *)conversationId {
+    // https://us-central1-chat-v2-dev.cloudfunctions.net/supportapi/tilechat/groups/support-group-LG9WBQE2mkIKVIhZmHW
+    NSString *tenant = [ChatManager getInstance].tenant;
+    NSString *url = [[NSString alloc] initWithFormat:@"https://us-central1-chat-v2-dev.cloudfunctions.net/supportapi/%@/groups/%@", tenant, conversationId];
+    return url;
 }
 
 +(void)loginWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(HelloUser *user, NSError *))callback {
@@ -59,7 +75,6 @@
     NSString *auth_url = [TiledeskAppService authService];
     NSLog(@"CUSTOM AUTH URL: %@", auth_url);
     NSLog(@"email: %@", email);
-//    NSLog(@"pwd: %@", password);
     NSDictionary* dict = @{
                            @"email": email,
                            @"password": password
@@ -89,6 +104,42 @@
         }
     }];
     [task resume];
+}
+
++(void)archiveConversation:(ChatConversation *)conversation completion:(void (^)(NSError *error))callback {
+    
+    FIRUser *fir_user = [FIRAuth auth].currentUser;
+    [fir_user getIDTokenWithCompletion:^(NSString * _Nullable token, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error while getting current FIrebase token: %@", error);
+            callback(error);
+            return;
+        }
+        NSString *service_url = [TiledeskAppService archiveConversationService:conversation.conversationId];
+        NSLog(@"URL: %@", service_url);
+        NSURL *url = [NSURL URLWithString:service_url];
+        NSURLSession *session = [NSURLSession sharedSession];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                           timeoutInterval:60.0];
+        [request addValue:token forHTTPHeaderField:@"Authorization"];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPMethod:@"DELETE"];
+        
+        NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error) {
+                NSLog(@"firebase auth ERROR: %@", error);
+                callback(error);
+            }
+            else {
+                NSString *token = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+                NSLog(@"token response: %@", token);
+                callback(nil);
+            }
+        }];
+        [task resume];
+    }];
 }
 
 +(NSData *)dictAsJSON:(NSDictionary *)dict {

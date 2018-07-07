@@ -7,3 +7,6 @@
  */
 
 "select a contact" = "Select a contact";
+"Want you exit" = "Are you sure you want to exit?";
+"Yes" = "Yes";
+"Cancel" = "Cancel";
