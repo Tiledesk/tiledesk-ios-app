@@ -107,6 +107,7 @@
 		B2151C4B20BC6C1A005B397B /* ChatGroupsDB.m in Sources */ = {isa = PBXBuildFile; fileRef = B2151BE920BC6C1A005B397B /* ChatGroupsDB.m */; };
 		B2151C4C20BC6C1A005B397B /* ChatContactsDB.m in Sources */ = {isa = PBXBuildFile; fileRef = B2151BEA20BC6C1A005B397B /* ChatContactsDB.m */; };
 		B2151C4D20BC6C1A005B397B /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2151BEC20BC6C1A005B397B /* ChatManager.m */; };
+		B217DC2A20F21C28000B7502 /* ChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = B217DC2920F21C28000B7502 /* ChatService.m */; };
 		B21A82D52075219B0068A2F9 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21A82D32075219A0068A2F9 /* DBChooser.framework */; };
 		B21A82D62075219B0068A2F9 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B21A82D42075219B0068A2F9 /* DBChooser.bundle */; };
 		B21D153C20E67A05001DA919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21D153B20E67A05001DA919 /* Assets.xcassets */; };
@@ -346,6 +347,8 @@
 		B2151BEA20BC6C1A005B397B /* ChatContactsDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatContactsDB.m; sourceTree = "<group>"; };
 		B2151BEB20BC6C1A005B397B /* ChatDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDB.h; sourceTree = "<group>"; };
 		B2151BEC20BC6C1A005B397B /* ChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
+		B217DC2820F21C28000B7502 /* ChatService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatService.h; sourceTree = "<group>"; };
+		B217DC2920F21C28000B7502 /* ChatService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatService.m; sourceTree = "<group>"; };
 		B21A82D32075219A0068A2F9 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		B21A82D42075219B0068A2F9 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
 		B21D153B20E67A05001DA919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -743,6 +746,8 @@
 				B2151BE320BC6C1A005B397B /* ChatSynchDelegate.h */,
 				B2151BD020BC6C1A005B397B /* FirebaseCustomAuthHelper.h */,
 				B2151BDD20BC6C1A005B397B /* FirebaseCustomAuthHelper.m */,
+				B217DC2820F21C28000B7502 /* ChatService.h */,
+				B217DC2920F21C28000B7502 /* ChatService.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -1123,6 +1128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2151C2420BC6C1A005B397B /* ChatSelectGroupMembersLocal.m in Sources */,
+				B217DC2A20F21C28000B7502 /* ChatService.m in Sources */,
 				B2151C3120BC6C1A005B397B /* ChatImagePreviewVC.m in Sources */,
 				BFBFD3951AEA54DA00657874 /* HelloAppDelegate.m in Sources */,
 				B2151BEF20BC6C1A005B397B /* ChatCustomView.m in Sources */,
