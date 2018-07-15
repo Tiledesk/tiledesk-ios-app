@@ -755,12 +755,12 @@
 		B2151BE520BC6C1A005B397B /* db */ = {
 			isa = PBXGroup;
 			children = (
-				B2151BE620BC6C1A005B397B /* ChatGroupsDB.h */,
 				B2151BE720BC6C1A005B397B /* ChatContactsDB.h */,
-				B2151BE820BC6C1A005B397B /* ChatDB.m */,
-				B2151BE920BC6C1A005B397B /* ChatGroupsDB.m */,
 				B2151BEA20BC6C1A005B397B /* ChatContactsDB.m */,
 				B2151BEB20BC6C1A005B397B /* ChatDB.h */,
+				B2151BE820BC6C1A005B397B /* ChatDB.m */,
+				B2151BE620BC6C1A005B397B /* ChatGroupsDB.h */,
+				B2151BE920BC6C1A005B397B /* ChatGroupsDB.m */,
 			);
 			path = db;
 			sourceTree = "<group>";
