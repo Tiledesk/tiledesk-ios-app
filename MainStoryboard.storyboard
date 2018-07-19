@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Home-->
         <scene sceneID="dOJ-tW-r9L">
             <objects>
-                <tabBarController id="HaB-sy-lJ3" sceneMemberID="viewController">
+                <tabBarController title="Home" id="HaB-sy-lJ3" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="aGf-Tu-Op6"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="KSs-sy-eNB">
@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dH5-UL-Jlt" kind="relationship" relationship="viewControllers" id="1xg-EP-KUi"/>
+                        <segue destination="JSS-fI-27t" kind="relationship" relationship="viewControllers" id="WVP-Vc-yeU"/>
                         <segue destination="uuy-vj-snI" kind="relationship" relationship="viewControllers" id="uWc-Hv-7M3"/>
                         <segue destination="Dmr-be-aqM" kind="relationship" relationship="viewControllers" id="lJx-9h-toB"/>
                     </connections>
@@ -31,14 +31,14 @@
             <point key="canvasLocation" x="-6489" y="1375"/>
         </scene>
         <!--home-vc-->
-        <scene sceneID="p5L-4W-x3R">
+        <scene sceneID="Ied-QC-uLB">
             <objects>
-                <viewControllerPlaceholder storyboardName="Tiledesk" referencedIdentifier="home-vc" id="dH5-UL-Jlt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="3KZ-eS-7hg"/>
+                <viewControllerPlaceholder storyboardName="Tiledesk" referencedIdentifier="home-vc" id="JSS-fI-27t" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ej7-CL-kGv"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vDg-ym-ren" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ZK-lp-deP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6160" y="877"/>
+            <point key="canvasLocation" x="-5957" y="953"/>
         </scene>
         <!--profile-vc-->
         <scene sceneID="5Zf-24-GsS">
@@ -48,7 +48,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wx9-0y-62v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5969" y="926"/>
+            <point key="canvasLocation" x="-5970" y="1157"/>
         </scene>
         <!--Chat-->
         <scene sceneID="Mjc-Al-qcX">

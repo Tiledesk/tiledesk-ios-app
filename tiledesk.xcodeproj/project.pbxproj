@@ -108,6 +108,13 @@
 		B2151C4C20BC6C1A005B397B /* ChatContactsDB.m in Sources */ = {isa = PBXBuildFile; fileRef = B2151BEA20BC6C1A005B397B /* ChatContactsDB.m */; };
 		B2151C4D20BC6C1A005B397B /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2151BEC20BC6C1A005B397B /* ChatManager.m */; };
 		B217DC2A20F21C28000B7502 /* ChatService.m in Sources */ = {isa = PBXBuildFile; fileRef = B217DC2920F21C28000B7502 /* ChatService.m */; };
+		B217DC3520FCAB45000B7502 /* history_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3320FCAB44000B7502 /* history_button@3x.png */; };
+		B217DC3620FCAB45000B7502 /* history_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3420FCAB44000B7502 /* history_button@2x.png */; };
+		B217DC3920FCACE6000B7502 /* baseline_create_black_24pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3720FCACE5000B7502 /* baseline_create_black_24pt@2x.png */; };
+		B217DC3A20FCACE6000B7502 /* baseline_create_black_24pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3820FCACE5000B7502 /* baseline_create_black_24pt@3x.png */; };
+		B217DC3D20FCAD69000B7502 /* baseline_history_black_24pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3B20FCAD68000B7502 /* baseline_history_black_24pt@3x.png */; };
+		B217DC3E20FCAD69000B7502 /* baseline_history_black_24pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3C20FCAD68000B7502 /* baseline_history_black_24pt@2x.png */; };
+		B217DC4120FCB617000B7502 /* ChatArchivedConversationsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B217DC4020FCB617000B7502 /* ChatArchivedConversationsTVC.m */; };
 		B21A82D52075219B0068A2F9 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21A82D32075219A0068A2F9 /* DBChooser.framework */; };
 		B21A82D62075219B0068A2F9 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B21A82D42075219B0068A2F9 /* DBChooser.bundle */; };
 		B21D153C20E67A05001DA919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21D153B20E67A05001DA919 /* Assets.xcassets */; };
@@ -349,6 +356,14 @@
 		B2151BEC20BC6C1A005B397B /* ChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		B217DC2820F21C28000B7502 /* ChatService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatService.h; sourceTree = "<group>"; };
 		B217DC2920F21C28000B7502 /* ChatService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatService.m; sourceTree = "<group>"; };
+		B217DC3320FCAB44000B7502 /* history_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history_button@3x.png"; sourceTree = "<group>"; };
+		B217DC3420FCAB44000B7502 /* history_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history_button@2x.png"; sourceTree = "<group>"; };
+		B217DC3720FCACE5000B7502 /* baseline_create_black_24pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseline_create_black_24pt@2x.png"; sourceTree = "<group>"; };
+		B217DC3820FCACE5000B7502 /* baseline_create_black_24pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseline_create_black_24pt@3x.png"; sourceTree = "<group>"; };
+		B217DC3B20FCAD68000B7502 /* baseline_history_black_24pt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseline_history_black_24pt@3x.png"; sourceTree = "<group>"; };
+		B217DC3C20FCAD68000B7502 /* baseline_history_black_24pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseline_history_black_24pt@2x.png"; sourceTree = "<group>"; };
+		B217DC3F20FCB617000B7502 /* ChatArchivedConversationsTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatArchivedConversationsTVC.h; sourceTree = "<group>"; };
+		B217DC4020FCB617000B7502 /* ChatArchivedConversationsTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatArchivedConversationsTVC.m; sourceTree = "<group>"; };
 		B21A82D32075219A0068A2F9 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		B21A82D42075219B0068A2F9 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
 		B21D153B20E67A05001DA919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -480,9 +495,9 @@
 		B2151B3520BC6C1A005B397B /* Chat21UI */ = {
 			isa = PBXGroup;
 			children = (
+				B2151B7620BC6C1A005B397B /* Chat.storyboard */,
 				B2151BAF20BC6C1A005B397B /* ChatUIManager.h */,
 				B2151B6520BC6C1A005B397B /* ChatUIManager.m */,
-				B2151B7620BC6C1A005B397B /* Chat.storyboard */,
 				B2151B4620BC6C1A005B397B /* images */,
 				B2151B6620BC6C1A005B397B /* QBPopupMenu */,
 				B2151B7320BC6C1A005B397B /* sounds */,
@@ -568,6 +583,12 @@
 		B2151B5C20BC6C1A005B397B /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				B217DC3C20FCAD68000B7502 /* baseline_history_black_24pt@2x.png */,
+				B217DC3B20FCAD68000B7502 /* baseline_history_black_24pt@3x.png */,
+				B217DC3720FCACE5000B7502 /* baseline_create_black_24pt@2x.png */,
+				B217DC3820FCACE5000B7502 /* baseline_create_black_24pt@3x.png */,
+				B217DC3420FCAB44000B7502 /* history_button@2x.png */,
+				B217DC3320FCAB44000B7502 /* history_button@3x.png */,
 				B2151B5D20BC6C1A005B397B /* ic_linear_support_gray_01@3x.png */,
 				B2151B5E20BC6C1A005B397B /* chat_check.png */,
 				B2151B5F20BC6C1A005B397B /* ic_linear_support_gray_01@2x.png */,
@@ -615,6 +636,8 @@
 				B2151B7C20BC6C1A005B397B /* ChatChangeGroupNameVC.m */,
 				B2151BAE20BC6C1A005B397B /* ChatConversationsVC.h */,
 				B2151B9120BC6C1A005B397B /* ChatConversationsVC.m */,
+				B217DC3F20FCB617000B7502 /* ChatArchivedConversationsTVC.h */,
+				B217DC4020FCB617000B7502 /* ChatArchivedConversationsTVC.m */,
 				B2151B9B20BC6C1A005B397B /* ChatCreateGroupVC.h */,
 				B2151B7A20BC6C1A005B397B /* ChatCreateGroupVC.m */,
 				B2151B8620BC6C1A005B397B /* ChatGroupInfoVC.h */,
@@ -1024,6 +1047,7 @@
 				B23AE8E81F278E8800BEB4B8 /* ic_linear_chat.png in Resources */,
 				B2151C0A20BC6C1A005B397B /* ic_linear_support_gray_01@2x.png in Resources */,
 				B23AE8ED1F278E8800BEB4B8 /* ic_linear_file@3x.png in Resources */,
+				B217DC3920FCACE6000B7502 /* baseline_create_black_24pt@2x.png in Resources */,
 				B2151C0920BC6C1A005B397B /* chat_check.png in Resources */,
 				B2151C0520BC6C1A005B397B /* icon_light_foto.png in Resources */,
 				B21459C01FFF7F1F0048535E /* Chat-Info.plist in Resources */,
@@ -1043,15 +1067,18 @@
 				B23AE8EF1F278E8800BEB4B8 /* ic_linear_home@2x.png in Resources */,
 				B2151BFB20BC6C1A005B397B /* icon_light_home@2x.png in Resources */,
 				B2151BFA20BC6C1A005B397B /* icon_light_home.png in Resources */,
+				B217DC3E20FCAD69000B7502 /* baseline_history_black_24pt@2x.png in Resources */,
 				B23AE8F01F278E8800BEB4B8 /* ic_linear_home@3x.png in Resources */,
 				B2151C0F20BC6C1A005B397B /* chat_double_check.png in Resources */,
 				B2151C0020BC6C1A005B397B /* icon_light_profile.png in Resources */,
 				B21D153C20E67A05001DA919 /* Assets.xcassets in Resources */,
 				B2151BF720BC6C1A005B397B /* no_image_message_placeholder.png in Resources */,
+				B217DC3520FCAB45000B7502 /* history_button@3x.png in Resources */,
 				B2151C0720BC6C1A005B397B /* icon_light_cerca.png in Resources */,
 				B2151BFC20BC6C1A005B397B /* icon_light_altro.png in Resources */,
 				B2151C0220BC6C1A005B397B /* icon_light_chat.png in Resources */,
 				B23AE8F31F278E8800BEB4B8 /* ic_linear_profile@3x.png in Resources */,
+				B217DC3A20FCACE6000B7502 /* baseline_create_black_24pt@3x.png in Resources */,
 				B2151C0B20BC6C1A005B397B /* chat_watch.png in Resources */,
 				B23AE8F11F278E8800BEB4B8 /* ic_linear_profile.png in Resources */,
 				B23AE8F21F278E8800BEB4B8 /* ic_linear_profile@2x.png in Resources */,
@@ -1061,6 +1088,7 @@
 				B2AA0A2720D9156400B6B8B8 /* tiledesk-logo-small.png in Resources */,
 				B2151BED20BC6C1A005B397B /* notification_view.xib in Resources */,
 				B2151C0820BC6C1A005B397B /* ic_linear_support_gray_01@3x.png in Resources */,
+				B217DC3D20FCAD69000B7502 /* baseline_history_black_24pt@3x.png in Resources */,
 				B2151BFE20BC6C1A005B397B /* icon_light_watch.png in Resources */,
 				B21A82D62075219B0068A2F9 /* DBChooser.bundle in Resources */,
 				B23AE8EE1F278E8800BEB4B8 /* ic_linear_home.png in Resources */,
@@ -1071,6 +1099,7 @@
 				B23AE8E91F278E8800BEB4B8 /* ic_linear_chat@2x.png in Resources */,
 				B2151BEE20BC6C1A005B397B /* status_title_ios11.xib in Resources */,
 				B2151BFD20BC6C1A005B397B /* icon_light_foto@2x.png in Resources */,
+				B217DC3620FCAB45000B7502 /* history_button@2x.png in Resources */,
 				B24AD7C11F86392700A526E9 /* Help-Info.plist in Resources */,
 				B2151C0E20BC6C1A005B397B /* ic_linear_support_gray_01.png in Resources */,
 				B253C73220CFB3E300F0EB20 /* Help.strings in Resources */,
@@ -1204,6 +1233,7 @@
 				B2151C2120BC6C1A005B397B /* ChatTitleVC.m in Sources */,
 				B2151C1620BC6C1A005B397B /* QBPopupMenuPagenatorView.m in Sources */,
 				B2C7CB9D1FDAFD1400F2EFFE /* HelloVC.m in Sources */,
+				B217DC4120FCB617000B7502 /* ChatArchivedConversationsTVC.m in Sources */,
 				B2151C1A20BC6C1A005B397B /* ChatMessagesTVC.m in Sources */,
 				B2151C2720BC6C1A005B397B /* ChatSelectUserLocalVC.m in Sources */,
 				B2151BF020BC6C1A005B397B /* ChatMessageComponents.m in Sources */,

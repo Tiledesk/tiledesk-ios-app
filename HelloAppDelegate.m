@@ -77,7 +77,7 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
         NSMutableArray *controllers = [[tabController viewControllers] mutableCopy];
         UINavigationController *conversationsNC = [[ChatUIManager getInstance] getConversationsViewController];
         conversationsNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Chat" image:[UIImage imageNamed:@"ic_linear_chat"] selectedImage:[UIImage imageNamed:@"ic_linear_chat"]];
-        controllers[1] = conversationsNC;
+        controllers[chat_tab_index] = conversationsNC;
         [tabController setViewControllers:controllers];
         ChatConversationsVC *conversationsVC = conversationsNC.viewControllers[0];
         [conversationsVC loadViewIfNeeded];

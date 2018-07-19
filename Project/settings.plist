@@ -6,9 +6,9 @@
 	<string>Tiledesk</string>
 	<key>chat-support</key>
 	<false/>
-	<key>host</key>
+	<key>auth-service-host</key>
 	<string>https://chat21-api-nodejs.herokuapp.com</string>
-	<key>auth-service</key>
+	<key>auth-service-path</key>
 	<string>/firebase/auth/signin</string>
 </dict>
 </plist>

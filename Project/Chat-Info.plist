@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>localization-bundle</key>
+	<string>Chat</string>
 	<key>groups-mode</key>
 	<false/>
 	<key>app-id</key>

@@ -25,8 +25,8 @@
 
 + (NSString *)authService {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
-    NSString *host = [dictionary objectForKey:@"host"];
-    NSString *authService = [dictionary objectForKey:@"auth-service"];
+    NSString *host = [dictionary objectForKey:@"auth-service-host"];
+    NSString *authService = [dictionary objectForKey:@"auth-service-path"];
     NSString *service = [NSString stringWithFormat:@"%@%@", host, authService];
     NSLog(@"auth service url: %@", service);
     return service;
