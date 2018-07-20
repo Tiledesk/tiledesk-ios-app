@@ -21,7 +21,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </tabBar>
                     <connections>
-                        <segue destination="JSS-fI-27t" kind="relationship" relationship="viewControllers" id="WVP-Vc-yeU"/>
                         <segue destination="uuy-vj-snI" kind="relationship" relationship="viewControllers" id="uWc-Hv-7M3"/>
                         <segue destination="Dmr-be-aqM" kind="relationship" relationship="viewControllers" id="lJx-9h-toB"/>
                     </connections>
@@ -29,16 +28,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0N-Od-iXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6489" y="1375"/>
-        </scene>
-        <!--home-vc-->
-        <scene sceneID="Ied-QC-uLB">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Tiledesk" referencedIdentifier="home-vc" id="JSS-fI-27t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ej7-CL-kGv"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5ZK-lp-deP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-5957" y="953"/>
         </scene>
         <!--profile-vc-->
         <scene sceneID="5Zf-24-GsS">

@@ -23,6 +23,7 @@
 #import "ChatAuth.h"
 #import <DBChooser/DBChooser.h>
 #import "TiledeskAppService.h"
+#import "HelloMyProfileTVC.h"
 
 #import <sys/utsname.h>
 @import Firebase;
@@ -288,6 +289,16 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
     if (self.applicationContext.loggedUser) {
         NSLog(@"Registering for remote notifications...");
         [application registerForRemoteNotifications];
+    }
+    else {
+        [HelloMyProfileTVC showLoginModalOnFirstTab];
+//        UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
+//        NSArray *controllers = [tabController viewControllers];
+//        UIViewController *firstTabController = controllers[0];
+//        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Tiledesk" bundle:nil];
+//        HelloAuthTVC *vc = (HelloAuthTVC *)[sb instantiateViewControllerWithIdentifier:@"login-vc"];
+//        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//        [firstTabController presentViewController:vc animated:NO completion:nil];
     }
 }
 

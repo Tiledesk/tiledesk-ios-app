@@ -115,6 +115,7 @@
 		B217DC3D20FCAD69000B7502 /* baseline_history_black_24pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3B20FCAD68000B7502 /* baseline_history_black_24pt@3x.png */; };
 		B217DC3E20FCAD69000B7502 /* baseline_history_black_24pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3C20FCAD68000B7502 /* baseline_history_black_24pt@2x.png */; };
 		B217DC4120FCB617000B7502 /* ChatArchivedConversationsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B217DC4020FCB617000B7502 /* ChatArchivedConversationsTVC.m */; };
+		B217DC4B2101F218000B7502 /* TiledeskLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = B217DC4A2101F218000B7502 /* TiledeskLocal.m */; };
 		B21A82D52075219B0068A2F9 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21A82D32075219A0068A2F9 /* DBChooser.framework */; };
 		B21A82D62075219B0068A2F9 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B21A82D42075219B0068A2F9 /* DBChooser.bundle */; };
 		B21D153C20E67A05001DA919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21D153B20E67A05001DA919 /* Assets.xcassets */; };
@@ -364,6 +365,8 @@
 		B217DC3C20FCAD68000B7502 /* baseline_history_black_24pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseline_history_black_24pt@2x.png"; sourceTree = "<group>"; };
 		B217DC3F20FCB617000B7502 /* ChatArchivedConversationsTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatArchivedConversationsTVC.h; sourceTree = "<group>"; };
 		B217DC4020FCB617000B7502 /* ChatArchivedConversationsTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatArchivedConversationsTVC.m; sourceTree = "<group>"; };
+		B217DC492101F218000B7502 /* TiledeskLocal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TiledeskLocal.h; sourceTree = "<group>"; };
+		B217DC4A2101F218000B7502 /* TiledeskLocal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TiledeskLocal.m; sourceTree = "<group>"; };
 		B21A82D32075219A0068A2F9 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		B21A82D42075219B0068A2F9 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
 		B21D153B20E67A05001DA919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -866,6 +869,8 @@
 				BFBFD5281AEA5F4E00657874 /* HelloApplicationContext.m */,
 				B2821A1820D95F5C0060B980 /* TiledeskAppService.h */,
 				B2821A1920D95F5C0060B980 /* TiledeskAppService.m */,
+				B217DC492101F218000B7502 /* TiledeskLocal.h */,
+				B217DC4A2101F218000B7502 /* TiledeskLocal.m */,
 			);
 			path = Tiledesk;
 			sourceTree = "<group>";
@@ -1230,6 +1235,7 @@
 				B2151C1420BC6C1A005B397B /* QBPlasticPopupMenu.m in Sources */,
 				BFBFD5601AEA80CC00657874 /* HelloAuth.m in Sources */,
 				B2151C4620BC6C1A005B397B /* ChatImageDownloadManager.m in Sources */,
+				B217DC4B2101F218000B7502 /* TiledeskLocal.m in Sources */,
 				B2151C2120BC6C1A005B397B /* ChatTitleVC.m in Sources */,
 				B2151C1620BC6C1A005B397B /* QBPopupMenuPagenatorView.m in Sources */,
 				B2C7CB9D1FDAFD1400F2EFFE /* HelloVC.m in Sources */,

@@ -1,6 +1,6 @@
 /*
  Localizable.strings
- Base
+ English
  
  Created by andrea sponziello on 17/09/16.
  
@@ -10,3 +10,6 @@
 "Want you exit" = "Are you sure you want to exit?";
 "Yes" = "Yes";
 "Cancel" = "Cancel";
+"hintLogin" = "Use your Tiledesk credentials to sign in";
+"authentication error" = "Authentication error";
+"authenticating" = "Authenticating...";

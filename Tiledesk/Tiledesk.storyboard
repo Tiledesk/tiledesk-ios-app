@@ -470,6 +470,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Tiledesk" id="Xhc-ET-zOC"/>
                     <connections>
+                        <outlet property="hintLabel" destination="gS1-F2-cuT" id="OP0-Mk-4aL"/>
                         <outlet property="loginButton" destination="Do5-wE-leq" id="n8P-MX-l5m"/>
                         <outlet property="passwordTextLabel" destination="9e1-Ao-nRl" id="5lq-v0-mtv"/>
                         <outlet property="usernameTextField" destination="RiU-is-UfT" id="sum-9H-Sza"/>

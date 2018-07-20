@@ -21,5 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *helpCell;
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
 
++(void)showLoginModalOnFirstTab;
+
 @end
 

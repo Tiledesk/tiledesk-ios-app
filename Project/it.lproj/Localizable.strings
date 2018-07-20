@@ -10,3 +10,6 @@
 "Want you exit" = "Sei siuro di voler uscire?";
 "Yes" = "Si";
 "Cancel" = "Annulla";
+"hintLogin" = "Usa le tue credenziali Tiledesk per accedere";
+"authentication error" = "Errore autenticazione";
+"authenticating" = "Autenticazione...";

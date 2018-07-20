@@ -16,6 +16,7 @@
 #import "ChatManager.h"
 #import "ChatUser.h"
 #import "HelpFacade.h"
+#import "HelloAuthTVC.h"
 
 @interface HelloMyProfileTVC ()
 
@@ -120,8 +121,19 @@
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     UITabBarController *tabController = (UITabBarController *)window.rootViewController;
     tabController.selectedIndex = 0;
+    [HelloMyProfileTVC showLoginModalOnFirstTab];
 }
 
++(void)showLoginModalOnFirstTab {
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+    UITabBarController *tabController = (UITabBarController *)window.rootViewController;
+    NSArray *controllers = [tabController viewControllers];
+    UIViewController *firstTabController = controllers[0];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Tiledesk" bundle:nil];
+    HelloAuthTVC *vc = (HelloAuthTVC *)[sb instantiateViewControllerWithIdentifier:@"login-vc"];
+    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [firstTabController presentViewController:vc animated:NO completion:nil];
+}
 - (IBAction)helpAction:(id)sender {
     NSLog(@"Help in %@ view.", NSStringFromClass([self class]));
     [[HelpFacade sharedInstance] openSupportView:self];

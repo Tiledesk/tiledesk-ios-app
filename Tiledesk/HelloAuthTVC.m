@@ -15,6 +15,7 @@
 #import "ChatManager.h"
 #import "HelloChatUtil.h"
 #import "TiledeskAppService.h"
+#import "TiledeskLocal.h"
 @import Firebase;
 
 @interface HelloAuthTVC () {
@@ -35,6 +36,7 @@
     HelloAppDelegate *app = (HelloAppDelegate *) [[UIApplication sharedApplication] delegate];
     NSString *appName = [app.applicationContext.settings objectForKey:@"app-name"];
     self.navigationItem.title = appName;
+    self.hintLabel.text = [TiledeskLocal translate:@"hintLogin"];
 }
 
 -(void)dismissKeyboard {
@@ -123,7 +125,7 @@
     }
     
     self.loginButton.enabled = false;
-    [self showWaiting:@"Autenticazione..."];
+    [self showWaiting:[TiledeskLocal translate:@"authenticating"]];
     [self firebaseLogin:email password:password];
 }
 
@@ -144,7 +146,7 @@
             NSLog(@"Firebase auth error: %@", error);
             weakSelf.loginButton.enabled = true;
             [weakSelf hideWaiting];
-            [self showAlert:@"Authentication error."];
+            [self showAlert:[TiledeskLocal translate:@"authentication error"]];
         }
         else {
             NSLog(@"Authentication success. user.id: %@, user.email: %@, user.password: ****", signedUser.userid, signedUser.email);
