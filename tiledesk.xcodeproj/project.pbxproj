@@ -115,10 +115,11 @@
 		B217DC3D20FCAD69000B7502 /* baseline_history_black_24pt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3B20FCAD68000B7502 /* baseline_history_black_24pt@3x.png */; };
 		B217DC3E20FCAD69000B7502 /* baseline_history_black_24pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B217DC3C20FCAD68000B7502 /* baseline_history_black_24pt@2x.png */; };
 		B217DC4120FCB617000B7502 /* ChatArchivedConversationsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B217DC4020FCB617000B7502 /* ChatArchivedConversationsTVC.m */; };
-		B217DC4B2101F218000B7502 /* TiledeskLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = B217DC4A2101F218000B7502 /* TiledeskLocal.m */; };
 		B21A82D52075219B0068A2F9 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21A82D32075219A0068A2F9 /* DBChooser.framework */; };
 		B21A82D62075219B0068A2F9 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B21A82D42075219B0068A2F9 /* DBChooser.bundle */; };
+		B21BE790211EE27800C2A8D1 /* HelloLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BE78E211EE27700C2A8D1 /* HelloLocale.m */; };
 		B21D153C20E67A05001DA919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21D153B20E67A05001DA919 /* Assets.xcassets */; };
+		B2203D192114AFC800B47B74 /* ChatStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = B2203D182114AFC800B47B74 /* ChatStyles.m */; };
 		B23A812B1F95D31F001344C0 /* HelloChatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B23A812A1F95D31E001344C0 /* HelloChatUtil.m */; };
 		B23AE8E81F278E8800BEB4B8 /* ic_linear_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = B23AE8DC1F278E8800BEB4B8 /* ic_linear_chat.png */; };
 		B23AE8E91F278E8800BEB4B8 /* ic_linear_chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B23AE8DD1F278E8800BEB4B8 /* ic_linear_chat@2x.png */; };
@@ -365,11 +366,13 @@
 		B217DC3C20FCAD68000B7502 /* baseline_history_black_24pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baseline_history_black_24pt@2x.png"; sourceTree = "<group>"; };
 		B217DC3F20FCB617000B7502 /* ChatArchivedConversationsTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatArchivedConversationsTVC.h; sourceTree = "<group>"; };
 		B217DC4020FCB617000B7502 /* ChatArchivedConversationsTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatArchivedConversationsTVC.m; sourceTree = "<group>"; };
-		B217DC492101F218000B7502 /* TiledeskLocal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TiledeskLocal.h; sourceTree = "<group>"; };
-		B217DC4A2101F218000B7502 /* TiledeskLocal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TiledeskLocal.m; sourceTree = "<group>"; };
 		B21A82D32075219A0068A2F9 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		B21A82D42075219B0068A2F9 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
+		B21BE78E211EE27700C2A8D1 /* HelloLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloLocale.m; sourceTree = "<group>"; };
+		B21BE78F211EE27800C2A8D1 /* HelloLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloLocale.h; sourceTree = "<group>"; };
 		B21D153B20E67A05001DA919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B2203D172114AFC800B47B74 /* ChatStyles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatStyles.h; sourceTree = "<group>"; };
+		B2203D182114AFC800B47B74 /* ChatStyles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatStyles.m; sourceTree = "<group>"; };
 		B23A81291F95D31E001344C0 /* HelloChatUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloChatUtil.h; sourceTree = "<group>"; };
 		B23A812A1F95D31E001344C0 /* HelloChatUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloChatUtil.m; sourceTree = "<group>"; };
 		B23AE8DC1F278E8800BEB4B8 /* ic_linear_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_linear_chat.png; sourceTree = "<group>"; };
@@ -524,18 +527,20 @@
 		B2151B3920BC6C1A005B397B /* util */ = {
 			isa = PBXGroup;
 			children = (
-				B2151B3A20BC6C1A005B397B /* ChatCustomView.m */,
-				B2151B3B20BC6C1A005B397B /* ChatMessageComponents.m */,
+				B2151B4520BC6C1A005B397B /* CellConfigurator.h */,
 				B2151B3C20BC6C1A005B397B /* CellConfigurator.m */,
+				B2151B4120BC6C1A005B397B /* ChatCustomView.h */,
+				B2151B3A20BC6C1A005B397B /* ChatCustomView.m */,
+				B2151B4420BC6C1A005B397B /* ChatImageUtil.h */,
 				B2151B3D20BC6C1A005B397B /* ChatImageUtil.m */,
 				B2151B3E20BC6C1A005B397B /* ChatLocal.h */,
-				B2151B3F20BC6C1A005B397B /* ChatProgressView.h */,
-				B2151B4020BC6C1A005B397B /* ChatMessageComponents.h */,
-				B2151B4120BC6C1A005B397B /* ChatCustomView.h */,
-				B2151B4220BC6C1A005B397B /* ChatProgressView.m */,
 				B2151B4320BC6C1A005B397B /* ChatLocal.m */,
-				B2151B4420BC6C1A005B397B /* ChatImageUtil.h */,
-				B2151B4520BC6C1A005B397B /* CellConfigurator.h */,
+				B2151B4020BC6C1A005B397B /* ChatMessageComponents.h */,
+				B2151B3B20BC6C1A005B397B /* ChatMessageComponents.m */,
+				B2151B3F20BC6C1A005B397B /* ChatProgressView.h */,
+				B2151B4220BC6C1A005B397B /* ChatProgressView.m */,
+				B2203D172114AFC800B47B74 /* ChatStyles.h */,
+				B2203D182114AFC800B47B74 /* ChatStyles.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -869,8 +874,8 @@
 				BFBFD5281AEA5F4E00657874 /* HelloApplicationContext.m */,
 				B2821A1820D95F5C0060B980 /* TiledeskAppService.h */,
 				B2821A1920D95F5C0060B980 /* TiledeskAppService.m */,
-				B217DC492101F218000B7502 /* TiledeskLocal.h */,
-				B217DC4A2101F218000B7502 /* TiledeskLocal.m */,
+				B21BE78F211EE27800C2A8D1 /* HelloLocale.h */,
+				B21BE78E211EE27700C2A8D1 /* HelloLocale.m */,
 			);
 			path = Tiledesk;
 			sourceTree = "<group>";
@@ -1202,6 +1207,7 @@
 				B2151C3320BC6C1A005B397B /* NotificationAlertView.m in Sources */,
 				B23CD80A20C526A200A0B3F0 /* HelpFacade.m in Sources */,
 				B2151C4420BC6C1A005B397B /* ChatContactsSynchronizer.m in Sources */,
+				B2203D192114AFC800B47B74 /* ChatStyles.m in Sources */,
 				BFBFD4D71AEA598000657874 /* HelloUser.m in Sources */,
 				B2151C4A20BC6C1A005B397B /* ChatDB.m in Sources */,
 				B23CD80B20C526A200A0B3F0 /* HelpCategoryStepTVC.m in Sources */,
@@ -1235,7 +1241,7 @@
 				B2151C1420BC6C1A005B397B /* QBPlasticPopupMenu.m in Sources */,
 				BFBFD5601AEA80CC00657874 /* HelloAuth.m in Sources */,
 				B2151C4620BC6C1A005B397B /* ChatImageDownloadManager.m in Sources */,
-				B217DC4B2101F218000B7502 /* TiledeskLocal.m in Sources */,
+				B21BE790211EE27800C2A8D1 /* HelloLocale.m in Sources */,
 				B2151C2120BC6C1A005B397B /* ChatTitleVC.m in Sources */,
 				B2151C1620BC6C1A005B397B /* QBPopupMenuPagenatorView.m in Sources */,
 				B2C7CB9D1FDAFD1400F2EFFE /* HelloVC.m in Sources */,

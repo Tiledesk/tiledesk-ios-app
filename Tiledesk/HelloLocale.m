@@ -1,14 +1,14 @@
 //
-//  TiledeskLocal.m
-//  tiledesk
+//  HelloLocale.m
+//  chat21
 //
-//  Created by Andrea Sponziello on 20/07/2018.
+//  Created by Andrea Sponziello on 10/08/2018.
 //  Copyright © 2018 Frontiere21. All rights reserved.
 //
 
-#import "TiledeskLocal.h"
+#import "HelloLocale.h"
 
-@implementation TiledeskLocal
+@implementation HelloLocale
 
 +(NSString *)translate:(NSString *)key {
     //    NSLog(@"translate: %@ with: %@", key, NSLocalizedStringFromTable(key, @"Chat", nil));
