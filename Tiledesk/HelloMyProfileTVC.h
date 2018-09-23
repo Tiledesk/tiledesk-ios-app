@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HelloMyProfileTVC : UITableViewController
+@class ChatDiskImageCache;
+
+@interface HelloMyProfileTVC : UITableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 - (IBAction)logoutAction:(id)sender;
@@ -20,6 +22,18 @@
 - (IBAction)helpAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableViewCell *helpCell;
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
+
+// profile photo
+@property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
+@property (assign, nonatomic) UIImage *currentProfilePhoto;
+@property (assign, nonatomic) NSString *profileId;
+
+// imagepicker
+@property (nonatomic, strong) UIImagePickerController *imagePickerController;
+@property (nonatomic, strong) UIImagePickerController *photoLibraryController;
+@property (nonatomic, strong) UIImage *scaledImage;
+@property (strong, nonatomic) UIImage *bigImage;
+@property (strong, nonatomic) ChatDiskImageCache *imageCache;
 
 +(void)showLoginModalOnFirstTab;
 

@@ -12,5 +12,6 @@ target 'tiledesk' do
   pod 'Firebase/Auth'
   pod 'Firebase/Messaging'
   pod 'Firebase/Storage'
+  pod 'SVProgressHUD'
   
 end

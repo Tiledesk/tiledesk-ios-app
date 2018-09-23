@@ -48,6 +48,7 @@
 
 +(void)loginWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(HelloUser *user, NSError *))callback {
     [TiledeskAppService loginForFirebaseTokenWithEmail:email password:password completion:^(NSString *token, NSError *error) {
+        NSLog(@"Logging in with email: %@ pwd: %@", email, password);
         if (error) {
             callback(nil, error);
         }
@@ -62,7 +63,9 @@
                     HelloUser *signedUser = [[HelloUser alloc] init];
                     signedUser.userid = user.userId;
                     signedUser.username = user.email;
-                    signedUser.email = user.email;
+                    // Registration with custom token returns firebase's users without email.
+                    // Using provided login form email to save user's email.
+                    signedUser.email = user.email != nil ? user.email : email;
                     signedUser.password = password;
                     callback(signedUser, nil);
                 }

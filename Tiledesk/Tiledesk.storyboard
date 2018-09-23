@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -274,9 +275,11 @@
                         <outlet property="fullNameLabel" destination="TJU-NT-iKG" id="3PX-0O-qGQ"/>
                         <outlet property="helpCell" destination="VGp-K0-3Uu" id="t4M-k2-eH6"/>
                         <outlet property="logoutButton" destination="re7-o8-4OC" id="DVB-Sw-LnG"/>
+                        <outlet property="profilePhotoImageView" destination="d3I-YM-RXw" id="rwb-ON-PGG"/>
                         <outlet property="useridLabel" destination="bKh-vX-mvM" id="78p-wr-bcx"/>
                         <outlet property="usernameLabel" destination="xAV-xf-e05" id="zkt-P5-5Y5"/>
                         <outlet property="versionLabel" destination="jyc-cb-2ZY" id="IjL-6G-0ck"/>
+                        <segue destination="hzo-96-gtv" kind="presentation" identifier="imagePreview" id="PDq-Z4-cPX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ri1-lG-lNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -956,8 +959,10 @@
                     <connections>
                         <outlet property="emailLabel" destination="ksw-Of-aHU" id="gd9-TO-mC4"/>
                         <outlet property="fullNameLabel" destination="C0N-6n-mi6" id="NQp-Lh-pEF"/>
+                        <outlet property="profilePhotoImageView" destination="dho-e4-How" id="e8v-lA-pvP"/>
                         <outlet property="useridLabel" destination="389-TR-5J3" id="0cX-wU-hlv"/>
                         <outlet property="usernameLabel" destination="pvt-QD-jX2" id="7BS-vU-eXz"/>
+                        <segue destination="hzo-96-gtv" kind="presentation" identifier="imagePreview" id="Alh-iG-yVY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9B8-ea-GFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -980,14 +985,65 @@
             </objects>
             <point key="canvasLocation" x="185" y="2970"/>
         </scene>
+        <!--Chat Show Image-->
+        <scene sceneID="395-kV-zwA">
+            <objects>
+                <viewController id="hzo-96-gtv" customClass="ChatShowImage" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KRh-d2-uWY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_image_message_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mh4-i9-K3X">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1a-JA-gpk">
+                                <rect key="frame" x="15" y="20" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Zgz-9D-ENG"/>
+                                    <constraint firstAttribute="width" constant="25" id="iDW-7v-GPO"/>
+                                </constraints>
+                                <state key="normal" title="Cancel" image="exiticonbutton.png"/>
+                                <connections>
+                                    <action selector="cancelAction:" destination="hzo-96-gtv" eventType="touchUpInside" id="r1o-q6-LvW"/>
+                                    <segue destination="8at-9W-hda" kind="unwind" unwindAction="unwindToProfileVC:" id="R2G-HA-OJl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e1a-JA-gpk" firstAttribute="leading" secondItem="wT5-4s-rdO" secondAttribute="leading" constant="15" id="949-Gh-xXQ"/>
+                            <constraint firstItem="wT5-4s-rdO" firstAttribute="trailing" secondItem="Mh4-i9-K3X" secondAttribute="trailing" id="LT5-PI-O4a"/>
+                            <constraint firstItem="e1a-JA-gpk" firstAttribute="top" secondItem="wT5-4s-rdO" secondAttribute="top" id="NlM-Gz-fL8"/>
+                            <constraint firstItem="Mh4-i9-K3X" firstAttribute="leading" secondItem="wT5-4s-rdO" secondAttribute="leading" id="beJ-su-0L9"/>
+                            <constraint firstItem="wT5-4s-rdO" firstAttribute="top" secondItem="Mh4-i9-K3X" secondAttribute="top" constant="20" id="ihw-s6-zLy"/>
+                            <constraint firstItem="wT5-4s-rdO" firstAttribute="bottom" secondItem="Mh4-i9-K3X" secondAttribute="bottom" id="wb8-55-jcb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wT5-4s-rdO"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Mh4-i9-K3X" id="3je-6a-ILM"/>
+                        <segue destination="8at-9W-hda" kind="unwind" identifier="unwindToMessagesVCsegue" unwindAction="unwindToMessagesVC:" id="DUH-SR-HXc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zlb-8B-ycX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8at-9W-hda" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1966" y="2525"/>
+        </scene>
     </scenes>
     <resources>
         <image name="app-icon-mobichat.png" width="134" height="134"/>
+        <image name="exiticonbutton.png" width="512" height="512"/>
         <image name="ic_linear_chat.png" width="32" height="32"/>
         <image name="ic_linear_profile.png" width="32" height="32"/>
         <image name="ic_linear_support_gray_01.png" width="32" height="32"/>
         <image name="icon_light_home.png" width="32" height="32"/>
+        <image name="no_image_message_placeholder.png" width="500" height="500"/>
         <image name="tiledesk-logo-small.png" width="245" height="248"/>
         <image name="user-profile-man.jpg" width="1200" height="1200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Alh-iG-yVY"/>
+    </inferredMetricsTieBreakers>
 </document>
