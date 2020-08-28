@@ -80,18 +80,17 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.loginButton.enabled = true;
     NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
     NSString *stored_username = [userPreferences stringForKey:@"stored_username"];
-    NSString *stored_password = [userPreferences stringForKey:@"stored_password"];
+//    NSString *stored_password = [userPreferences stringForKey:@"stored_password"];
     
-    NSLog(@"%@ %@", stored_username, stored_password);
-    if (![stored_username isEqualToString:@""] && ![stored_password isEqualToString:@""]) {
+//    NSLog(@"%@ %@", stored_username, stored_password);
+    if (![stored_username isEqualToString:@""]) {
         self.usernameTextField.text = stored_username;
-        self.passwordTextLabel.text = stored_password;
+//        self.passwordTextLabel.text = stored_password;
     }
-    //    self.usernameTextField.text = @"test.monitoraggio";
-    //    self.passwordTextLabel.text = @"123456";
 }
 
 -(void)showWaiting:(NSString *)label {
@@ -126,14 +125,14 @@
     
     self.loginButton.enabled = false;
     [self showWaiting:[HelloLocale translate:@"authenticating"]];
-    [self firebaseLogin:email password:password];
+    [self loginWithEmail:email password:password];
 }
 
 - (IBAction)registerAction:(id)sender {
     NSLog(@"Register");
 }
 
--(void)firebaseLogin:(NSString *)email password:(NSString *)password {
+-(void)loginWithEmail:(NSString *)email password:(NSString *)password {
     
     HelloAppDelegate *appDelegate = (HelloAppDelegate *)[[UIApplication sharedApplication] delegate];
     HelloApplicationContext *context = appDelegate.applicationContext;
@@ -149,7 +148,7 @@
             [self showAlert:[HelloLocale translate:@"authentication error"]];
         }
         else {
-            NSLog(@"Authentication success. user.id: %@, user.email: %@, user.password: ****", signedUser.userid, signedUser.email);
+            NSLog(@"Authentication success. user.id: %@, email: %@, fullname: %@, firstname: %@", signedUser.userid, signedUser.email, signedUser.fullName, signedUser.firstName);
 //            HelloUser *signedUser = [[HelloUser alloc] init];
 //            signedUser.userid = fir_user.uid;
 //            signedUser.username = fir_user.email;
@@ -157,32 +156,34 @@
 //            signedUser.password = password;
 
             // store user info for next login.
-            // REMOVE ON PRODUCTION. HERE JUST TO ACCELERATE DEVELOPMENT
-//            NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
-//
+            NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
 //            [userPreferences setObject:password forKey:@"stored_password"];
-//            [userPreferences setObject:email forKey:@"stored_username"];
-//            [userPreferences synchronize];
+            [userPreferences setObject:email forKey:@"stored_username"];
+            [userPreferences synchronize];
 
-            ChatManager *chatm = [ChatManager getInstance];
-            [chatm getContactLocalDB:signedUser.userid withCompletion:^(ChatUser *user) {
-                if (user) {
-                    signedUser.firstName = user.firstname;
-                    signedUser.lastName = user.lastname;
-                    [context signin:signedUser];
-                    [weakSelf hideWaiting];
-                    [self initChatAndCloseView:weakSelf];
-                }
-                else {
-                    [chatm getUserInfoRemote:signedUser.userid withCompletion:^(ChatUser *user) {
-                        signedUser.firstName = user.firstname;
-                        signedUser.lastName = user.lastname;
-                        [context signin:signedUser];
-                        [weakSelf hideWaiting];
-                        [self initChatAndCloseView:weakSelf];
-                    }];
-                }
-            }];
+            [context signin:signedUser];
+            [weakSelf hideWaiting];
+            [self initChatAndCloseView:weakSelf];
+            
+//            ChatManager *chatm = [ChatManager getInstance];
+//            [chatm getContactLocalDB:signedUser.userid withCompletion:^(ChatUser *user) {
+//                if (user) {
+//                    signedUser.firstName = user.firstname;
+//                    signedUser.lastName = user.lastname;
+//                    [context signin:signedUser];
+//                    [weakSelf hideWaiting];
+//                    [self initChatAndCloseView:weakSelf];
+//                }
+//                else {
+//                    [chatm getUserInfoRemote:signedUser.userid withCompletion:^(ChatUser *user) {
+//                        signedUser.firstName = user.firstname;
+//                        signedUser.lastName = user.lastname;
+//                        [context signin:signedUser];
+//                        [weakSelf hideWaiting];
+//                        [self initChatAndCloseView:weakSelf];
+//                    }];
+//                }
+//            }];
         }
     }];
 }
@@ -212,6 +213,11 @@
     // for ipad
     view.popoverPresentationController.barButtonItem = self.navigationItem.rightBarButtonItem;
     [self presentViewController:view animated:YES completion:nil];
+}
+
+- (IBAction)forgotPasswordAction:(id)sender {
+    NSLog(@"forgot password action");
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://console.tiledesk.com/v2/dashboard/#/forgotpsw"]];
 }
 
 @end

@@ -7,8 +7,10 @@
 	<key>chat-support</key>
 	<false/>
 	<key>auth-service-host</key>
-	<string>https://chat21-api-nodejs.herokuapp.com</string>
+	<string>https://api.tiledesk.com</string>
 	<key>auth-service-path</key>
-	<string>/firebase/auth/signin</string>
+	<string>/v2/auth/signin</string>
+	<key>firebase-custom-token-path</key>
+	<string>/v2/chat21/firebase/auth/createCustomToken</string>
 </dict>
 </plist>

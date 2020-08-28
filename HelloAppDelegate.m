@@ -22,13 +22,16 @@
 #import "ChatMessage.h"
 #import "ChatAuth.h"
 #import <DBChooser/DBChooser.h>
+#import "ChatConversationHandler.h"
 #import "TiledeskAppService.h"
 #import "HelloMyProfileTVC.h"
 
 #import <sys/utsname.h>
 @import Firebase;
 
-@implementation HelloAppDelegate
+@implementation HelloAppDelegate {
+    NSTimer * _Nullable backgroundDownloadTimer;
+}
 
 static NSString *NOTIFICATION_KEY_TYPE = @"t"; //type
 static NSString *NOTIFICATION_KEY_TYPE_CHAT = @"chat";
@@ -61,10 +64,10 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
         // now I can try to authenticate. Always authenticate on on app's startup
         [TiledeskAppService loginWithEmail:context.loggedUser.email password:context.loggedUser.password completion:^(HelloUser *user, NSError *error) {
             if (error) {
-                NSLog(@"Authentication error. %@", error);
+                NSLog(@"Authentication error in AppDelegate. %@", error);
             }
             else {
-                NSLog(@"Authentication success.");
+                NSLog(@"Authentication success in AppDelegate.");
             }
         }];
         
@@ -92,7 +95,7 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
     NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (userInfo) {
         NSLog(@"REMOTE NOTIFICATION STARTED THE APPLICATION!");
-        [self processRemoteNotification:userInfo];
+        [self processRemoteNotification:userInfo moveToConversation:YES];
     }
     
     // the chat app only asks notification permission when user is logged in
@@ -144,24 +147,98 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
 }
 
 // #notificationsworkflow
-- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo {
+//- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo {
+//    NSLog(@"REMOTE NOTIFICATION. didReceiveRemoteNotification: %@", userInfo);
+//    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+//    NSLog(@"APPLICATION DID RECEIVE REMOTE NOTIFICATION IN STATE: %ld", (long)state);
+//    switch (state) {
+//        case UIApplicationStateBackground:
+//            NSLog(@"APPLICATION WAS RUNNING IN STATE UIApplicationStateBackground");
+//            [self processRemoteNotification:userInfo];
+//            break;
+//        case UIApplicationStateInactive:
+//            NSLog(@"APPLICATION WAS RUNNING IN STATE UIApplicationStateInactive");
+//            [self processRemoteNotification:userInfo];
+//            break;
+//        case UIApplicationStateActive:
+//            NSLog(@"APPLICATION WAS RUNNING IN STATE UIApplicationStateActive");
+//            [self processRemoteNotification:userInfo];
+//            break;
+//        default:
+//            NSLog(@"APPLICATION WAS RUNNING IN UNKNOWN STATE (%ld), NOTIFICATION IGNORED.", (long)state);
+//            break;
+//    }
+//}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"call -> application:didReceiveRemoteNotification:fetchCompletionHandler:UIBackgroundFetchResultNewData");
     NSLog(@"REMOTE NOTIFICATION. didReceiveRemoteNotification: %@", userInfo);
     UIApplicationState state = [[UIApplication sharedApplication] applicationState];
     NSLog(@"APPLICATION DID RECEIVE REMOTE NOTIFICATION IN STATE: %ld", (long)state);
-    if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
-    {
-        NSLog(@"APPLICATION WAS RUNNING IN BACKGROUND!");
-        [self processRemoteNotification:userInfo];
+    
+    // can't avoid to switch to user conversation on every notification.
+    // switch to conversation should appen only on notification tap on user screen
+    // using background state delegates to set a applition var (ex. appBackgrounded) doesn't work
+    // beacause you can't reset the var on app-> foreground:
+    // didReceiveRemoteNotification() always called before willEnter/didEnterForeground
+    if (state == UIApplicationStateBackground) {
+        NSLog(@"APPLICATION state == UIApplicationStateBackground");
+        [self processRemoteNotification:userInfo moveToConversation:YES];
+        [self startBackgroundDownloadTimerFetchCompletionHandler:completionHandler];
+    }
+    else if (state == UIApplicationStateInactive) {
+        NSLog(@"APPLICATION state == UIApplicationStateInactive");
+        [self processRemoteNotification:userInfo moveToConversation:YES];
+        [self startBackgroundDownloadTimerFetchCompletionHandler:completionHandler];
     }
     else {
         NSLog(@"APPLICATION IS RUNNING IN FOREGROUND! NOTIFICATION IGNORED.");
+        [self processRemoteNotification:userInfo moveToConversation:NO];
+        completionHandler(UIBackgroundFetchResultNewData);
     }
 }
 
+-(void)startBackgroundDownloadTimerFetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
+    if (backgroundDownloadTimer) {
+        completionHandler(UIBackgroundFetchResultNewData);
+        return;
+    }
+    else {
+        self.fetchCompletionHandler = completionHandler;
+        backgroundDownloadTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(backgroundDownloadTimerEnd:) userInfo:nil repeats:NO];
+    }
+    
+    // testing network available on new push with content-available: 1
+    //    HelpDataService *service =[[HelpDataService alloc] init];
+    //    [service downloadDepartmentsWithCompletionHandler:^(NSArray<HelpDepartment *> *departments, NSError *error) {
+    //        NSLog(@"count deps: %lu", (unsigned long)departments.count);
+    //        for (HelpDepartment *dep in departments) {
+    //            NSLog(@"dep id: %@, name: %@ isDefault: %d", dep.departmentId, dep.name, dep.isDefault);
+    //        }
+    //        completionHandler(UIBackgroundFetchResultNewData);
+    //    }];
+    
+    
+}
+
+-(void)backgroundDownloadTimerEnd:(NSTimer *)timer {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"Timer END");
+        if (backgroundDownloadTimer) {
+            if ([backgroundDownloadTimer isValid]) {
+                [backgroundDownloadTimer invalidate];
+            }
+            backgroundDownloadTimer = nil;
+        }
+        self.fetchCompletionHandler(UIBackgroundFetchResultNewData);
+    });
+}
+
 // #notificationsworkflow
--(void)processRemoteNotification:(NSDictionary*)userInfo {
+-(void)processRemoteNotification:(NSDictionary*)userInfo moveToConversation:(BOOL)moveToConversation {
     NSDictionary *aps = [userInfo objectForKey:NOTIFICATION_KEY_APS];
-//    NSString *alert = [aps objectForKey:NOTIFICATION_KEY_ALERT];
+    NSString *content_available = [[userInfo objectForKey:NOTIFICATION_KEY_APS] objectForKey:@"content-available"];
+    NSLog(@"CONTENT-AVAILABLE: %@", content_available);
     NSString *category = [aps objectForKey:NOTIFICATION_KEY_CATEGORY];
     
     if ([category isEqualToString:NOTIFICATION_VALUE_NEW_MESSAGE]) {
@@ -170,25 +247,37 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
         NSString *recipientid = [userInfo objectForKey:@"recipient"];
         NSString *recipient_fullname = [userInfo objectForKey:@"recipient_fullname"];
         NSString *channel_type = [userInfo objectForKey:@"channel_type"];
-//        NSString *badge = [[userInfo objectForKey:NOTIFICATION_KEY_APS] objectForKey:NOTIFICATION_KEY_BADGE];
         
+        ChatManager *chatm = [ChatManager getInstance];
+        [chatm getAndStartConversationsHandler];
         if ([channel_type isEqualToString:MSG_CHANNEL_TYPE_GROUP]) {
             // GROUP MESSAGE
             ChatGroup *group = [[ChatGroup alloc] init];
             group.name = recipient_fullname;
             group.groupId = recipientid;
-//            [[ChatManager getInstance] createGroupFromPushNotificationWithName:group.name groupId:group.groupId];
-            [ChatUIManager moveToConversationViewWithGroup:group];
+            [chatm getConversationHandlerForGroup:group completion:^(ChatConversationHandler *handler) {
+                [handler connect];
+                if (moveToConversation) {
+                    [ChatUIManager moveToConversationViewWithGroup:group];
+                }
+            }];
         }
         else {
             // DIRECT MESSAGE
-            NSString *trimmedSender = [senderid stringByTrimmingCharactersInSet:
-                                       [NSCharacterSet whitespaceCharacterSet]];
+            NSString *trimmedSender = [senderid stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
             if (trimmedSender.length > 0) {
                 ChatUser *user = [[ChatUser alloc] init];
                 user.userId = senderid;
                 user.fullname = sender_fullname;
-                [ChatUIManager moveToConversationViewWithUser:user];
+                [chatm getConversationHandlerForRecipient:user completion:^(ChatConversationHandler *handler) {
+                    [handler connect];
+                    if (moveToConversation) {
+                        [ChatUIManager moveToConversationViewWithUser:user];
+                    }
+                }];
+            }
+            else {
+                NSLog(@"Error: invalid sender (0 length). Message notification discarded.");
             }
         }
     }
@@ -232,8 +321,8 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
     // Note that this callback will be fired everytime a new token is generated, including the first
     // time. So if you need to retrieve the token as soon as it is available this is where that
     // should be done.
-    NSString *refreshedToken = [[FIRInstanceID instanceID] token];
-    NSLog(@"InstanceID token: %@", refreshedToken);
+//    NSString *refreshedToken = [[FIRInstanceID instanceID] token];
+//    NSLog(@"InstanceID token: %@", refreshedToken);
     
     // Connect to FCM since connection may have failed when attempted before having a token.
     //    [self connectToFcm];

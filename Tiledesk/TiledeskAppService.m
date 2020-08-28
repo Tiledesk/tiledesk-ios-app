@@ -32,6 +32,15 @@
     return service;
 }
 
++ (NSString *)firebaseCustomTokenUrl {
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
+    NSString *host = [dictionary objectForKey:@"auth-service-host"];
+    NSString *firebaseAuthService = [dictionary objectForKey:@"firebase-custom-token-path"];
+    NSString *service = [NSString stringWithFormat:@"%@%@", host, firebaseAuthService];
+    NSLog(@"firebaseAuthService url: %@", service);
+    return service;
+}
+
 //+(NSString *)archiveConversationService:(NSString *)conversationId {
 //    // https://us-central1-chat-v2-dev.cloudfunctions.net/api/tilechat/conversations/support-group-LGdXjl_T98q_Kz3ycdJ
 //    NSString *tenant = [ChatManager getInstance].tenant;
@@ -47,37 +56,45 @@
 //}
 
 +(void)loginWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(HelloUser *user, NSError *))callback {
-    [TiledeskAppService loginForFirebaseTokenWithEmail:email password:password completion:^(NSString *token, NSError *error) {
-        NSLog(@"Logging in with email: %@ pwd: %@", email, password);
+    [TiledeskAppService signinWithEmail:email password:password completion:^(NSDictionary *jsonResponse, NSError *error) {
+        NSLog(@"Logged in with email");
         if (error) {
             callback(nil, error);
         }
         else {
-            [ChatAuth authWithCustomToken:token completion:^(ChatUser *user, NSError *error) {
-                if (error) {
-                    NSLog(@"Authentication error. %@", error);
-                    callback(nil, error);
-                }
-                else {
-                    NSLog(@"Authentication success.");
-                    HelloUser *signedUser = [[HelloUser alloc] init];
-                    signedUser.userid = user.userId;
-                    signedUser.username = user.email;
-                    // Registration with custom token returns firebase's users without email.
-                    // Using provided login form email to save user's email.
-                    signedUser.email = user.email != nil ? user.email : email;
-                    signedUser.password = password;
-                    callback(signedUser, nil);
-                }
+            NSString *tiledeskToken = [jsonResponse objectForKey:@"token"];
+            NSLog(@"tiledeskToken: %@", tiledeskToken);
+            
+            [TiledeskAppService getFirebaseTokenWithTiledeskToken:(NSString *)tiledeskToken completion:^(NSString *firebaseToken, NSError *error) {
+                NSLog(@"FirebaseToken: %@", firebaseToken);
+                [ChatAuth authWithCustomToken:firebaseToken completion:^(ChatUser *user, NSError *error) {
+                    if (error) {
+                        NSLog(@"Authentication error. %@", error);
+                        callback(nil, error);
+                    }
+                    else {
+                        NSLog(@"Authentication success.");
+                        HelloUser *signedUser = [[HelloUser alloc] init];
+                        signedUser.userid = user.userId;
+                        signedUser.username = user.email;
+                        signedUser.firstName = jsonResponse[@"user"][@"firstname"];
+                        signedUser.lastName = jsonResponse[@"user"][@"lastname"];
+                        signedUser.fullName = [[NSString stringWithFormat:@"%@ %@", signedUser.firstName, signedUser.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                        // Registration with custom token returns firebase's users without email.
+                        // Using provided login form email to save user's email.
+                        signedUser.email = user.email != nil ? user.email : email;
+                        signedUser.password = password;
+                        callback(signedUser, nil);
+                    }
+                }];
             }];
         }
     }];
 }
 
-+(void)loginForFirebaseTokenWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSString *token, NSError *error))callback {
++(void)signinWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *json, NSError *error))callback {
     NSString *auth_url = [TiledeskAppService authService];
-    NSLog(@"CUSTOM AUTH URL: %@", auth_url);
-    NSLog(@"email: %@", email);
+    
     NSDictionary* dict = @{
                            @"email": email,
                            @"password": password
@@ -89,7 +106,6 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:60.0];
-    
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];
@@ -97,13 +113,50 @@
 
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
+            NSLog(@"Auth ERROR: %@", error);
+            callback(nil, error);
+        }
+        else {
+            NSString *responseString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"Tiledesk Auth JSON Response: %@", responseString);
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            callback(json, nil);
+        }
+    }];
+    [task resume];
+}
+
++(void)getFirebaseTokenWithTiledeskToken:(NSString *)tiledeskToken completion:(void (^)(NSString *firebaseToken, NSError *error))callback {
+    NSString *firebase_custom_token_url = [TiledeskAppService firebaseCustomTokenUrl];
+    
+//    NSDictionary* dict = @{
+//                           @"email": email,
+//                           @"password": password
+//                           };
+//    NSData *jsonData = [TiledeskAppService dictAsJSON:dict];
+    NSURL *url = [NSURL URLWithString:firebase_custom_token_url];
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:tiledeskToken forHTTPHeaderField:@"authorization"];
+    [request setHTTPMethod:@"POST"];
+//    [request setHTTPBody:jsonData];
+
+    NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
             NSLog(@"firebase auth ERROR: %@", error);
             callback(nil, error);
         }
         else {
-            NSString *token = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-            NSLog(@"token response: %@", token);
-            callback(token, nil);
+            NSString *responseString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"responseString: %@", responseString);
+//            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            callback(responseString, nil);
         }
     }];
     [task resume];

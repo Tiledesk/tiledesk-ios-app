@@ -27,7 +27,7 @@
     chatUser.userId = app.applicationContext.loggedUser.userid;
     chatUser.firstname = app.applicationContext.loggedUser.firstName;
     chatUser.lastname = app.applicationContext.loggedUser.lastName;
-    
+    NSLog(@"CHATUSER.FULLNAME %@ FIRSTNAME: %@", chatUser.fullname, chatUser.firstname);
     ChatManager *chatm = [ChatManager getInstance];
     [chatm startWithUser:chatUser];
     NSLog(@"Updates user from local contacts synch...");

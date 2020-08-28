@@ -17,7 +17,9 @@
 +(NSString *)archiveAndCloseSupportConversationService:(NSString *)conversationId;
 
 +(void)loginWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(HelloUser *user, NSError *))callback;
-+(void)loginForFirebaseTokenWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSString *token, NSError *error))callback;
++(void)signinWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *json, NSError *))callback;
+//+(void)loginForFirebaseTokenWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *json, NSError *error))callback;
++(void)getFirebaseTokenWithTiledeskToken:(NSString *)tiledeskToken completion:(void (^)(NSString *firebaseToken, NSError *error))callback;
 //+(void)archiveConversation:(ChatConversation *)conversation completion:(void (^)(NSError *error))callback;
 
 @end

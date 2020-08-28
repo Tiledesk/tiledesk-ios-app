@@ -11,7 +11,7 @@
 #import "HelloAppDelegate.h"
 #import "HelloApplicationContext.h"
 #import "HelloAuthTVC.h"
-#import "HelpFacade.h"
+//#import "HelpFacade.h"
 #import "ChatUIManager.h"
 #import "ChatUser.h"
 
@@ -26,7 +26,7 @@
     HelloAppDelegate *app = (HelloAppDelegate *) [[UIApplication sharedApplication] delegate];
     self.appName.text = [app.applicationContext.settings objectForKey:@"app-name"];
     [self.selectContactButton setTitle:NSLocalizedString(@"select a contact", nil) forState:UIControlStateNormal];
-    [[HelpFacade sharedInstance] activateSupportBarButton:self];
+//    [[HelpFacade sharedInstance] activateSupportBarButton:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,10 +63,10 @@
 }
 */
 
-- (IBAction)helpAction:(id)sender {
-    NSLog(@"Help in Home menu view.");
-    [[HelpFacade sharedInstance] openSupportView:self];
-}
+//- (IBAction)helpAction:(id)sender {
+//    NSLog(@"Help in Home menu view.");
+//    [[HelpFacade sharedInstance] openSupportView:self];
+//}
 
 //-(void)helpWizardEnd:(NSDictionary *)context {
 //    NSLog(@"helpWizardEnd");
@@ -80,12 +80,12 @@
     }];
 }
 
-- (IBAction)openConversationWithSomeone:(id)sender {
-    ChatUser *recipient = [[ChatUser alloc] init:@"y4QN01LIgGPGnoV6ql07hwPAQg23" fullname:@"Andrew Sponzillo"];
-    [[ChatUIManager getInstance] openConversationMessagesViewAsModalWith:(ChatUser *)recipient viewController:self attributes:nil withCompletionBlock:^{
-        NSLog(@"Messages view dismissed.");
-    }];
-}
+//- (IBAction)openConversationWithSomeone:(id)sender {
+//    ChatUser *recipient = [[ChatUser alloc] init:@"y4QN01LIgGPGnoV6ql07hwPAQg23" fullname:@"Andrew Sponzillo"];
+//    [[ChatUIManager getInstance] openConversationMessagesViewAsModalWith:(ChatUser *)recipient viewController:self attributes:nil withCompletionBlock:^{
+//        NSLog(@"Messages view dismissed.");
+//    }];
+//}
 
 - (IBAction)selectContactAction:(id)sender {
     NSLog(@"Selecting contact");
@@ -101,20 +101,20 @@
     }];
 }
 
-- (IBAction)selectContactAndConverseAction:(id)sender {
-    NSLog(@"Selecting contact");
-    [[ChatUIManager getInstance] openSelectContactViewAsModal:self withCompletionBlock:^(ChatUser *contact, BOOL canceled) {
-        if (canceled) {
-            NSLog(@"Select Contact canceled");
-        }
-        else {
-            NSLog(@"Selected contact: %@/%@", contact.fullname, contact.userId);
-            [[ChatUIManager getInstance] openConversationMessagesViewAsModalWith:(ChatUser *)contact viewController:self attributes:nil withCompletionBlock:^{
-                NSLog(@"Messages view dismissed.");
-            }];
-        }
-    }];
-}
+//- (IBAction)selectContactAndConverseAction:(id)sender {
+//    NSLog(@"Selecting contact");
+//    [[ChatUIManager getInstance] openSelectContactViewAsModal:self withCompletionBlock:^(ChatUser *contact, BOOL canceled) {
+//        if (canceled) {
+//            NSLog(@"Select Contact canceled");
+//        }
+//        else {
+//            NSLog(@"Selected contact: %@/%@", contact.fullname, contact.userId);
+//            [[ChatUIManager getInstance] openConversationMessagesViewAsModalWith:(ChatUser *)contact viewController:self attributes:nil withCompletionBlock:^{
+//                NSLog(@"Messages view dismissed.");
+//            }];
+//        }
+//    }];
+//}
 
 -(void)alert:(NSString *)msg {
     UIAlertController *view = [UIAlertController

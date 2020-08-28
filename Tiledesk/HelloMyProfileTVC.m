@@ -15,7 +15,7 @@
 #import "ChatUtil.h"
 #import "ChatManager.h"
 #import "ChatUser.h"
-#import "HelpFacade.h"
+//#import "HelpFacade.h"
 #import "HelloAuthTVC.h"
 #import "ChatImageUtil.h"
 #import "ChatShowImage.h"
@@ -42,7 +42,7 @@
     [self.profilePhotoImageView setUserInteractionEnabled:YES];
     [self.profilePhotoImageView addGestureRecognizer:singleTap];
     
-    [[HelpFacade sharedInstance] activateSupportBarButton:self];
+//    [[HelpFacade sharedInstance] activateSupportBarButton:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,9 +53,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 4) { // cella supporto
-        if (![HelpFacade sharedInstance].supportEnabled) {
+//        if (![HelpFacade sharedInstance].supportEnabled) {
             return 0;
-        }
+//        }
     }
     
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
@@ -96,7 +96,7 @@
     [super viewWillAppear:animated];
     HelloUser *loggedUser = [HelloApplicationContext getSharedInstance].loggedUser;
     self.profileId = loggedUser.userid;
-    self.usernameLabel.text = loggedUser.username;
+    self.usernameLabel.text = loggedUser.email;
     self.useridLabel.text = loggedUser.userid;
     self.emailLabel.text = loggedUser.email;
     self.fullNameLabel.text = loggedUser.displayName;
@@ -148,13 +148,13 @@
 
 - (IBAction)helpAction:(id)sender {
     NSLog(@"Help in %@ view.", NSStringFromClass([self class]));
-    [[HelpFacade sharedInstance] openSupportView:self];
+//    [[HelpFacade sharedInstance] openSupportView:self];
 }
 
 -(void)helpWizardEnd:(NSDictionary *)context {
     NSLog(@"helpWizardEnd");
     [context setValue:NSStringFromClass([self class]) forKey:@"section"];
-    [[HelpFacade sharedInstance] handleWizardSupportFromViewController:self helpContext:context];
+//    [[HelpFacade sharedInstance] handleWizardSupportFromViewController:self helpContext:context];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -175,10 +175,10 @@
     self.profilePhotoImageView.layer.cornerRadius = self.profilePhotoImageView.frame.size.width / 2;
     self.profilePhotoImageView.clipsToBounds = YES;
     
-    // try to get image from cache
+    // trying to get image from cache
     NSString *imageURL = [ChatManager profileImageURLOf:profileId];
     NSURL *url = [NSURL URLWithString:imageURL];
-    NSString *cache_key = [self.imageCache urlAsKey:url];
+    NSString *cache_key = [ChatDiskImageCache urlAsKey:url];
     UIImage *cachedProfileImage = [self.imageCache getCachedImage:cache_key];
     [self setupCurrentProfileViewWithImage:cachedProfileImage];
     [self.imageCache getImage:imageURL completionHandler:^(NSString *imageURL, UIImage *image) {
@@ -353,7 +353,7 @@
         self.currentProfilePhoto = nil;
         [self resetProfilePhoto];
         ChatUser *loggedUser = [ChatManager getInstance].loggedUser;
-        [self.imageCache deleteImageFromCacheWithKey:[self.imageCache urlAsKey:[NSURL URLWithString:loggedUser.profileImageURL]]];
+        [self.imageCache deleteImageFromCacheWithKey:[ChatDiskImageCache urlAsKey:[NSURL URLWithString:loggedUser.profileImageURL]]];
         if (error) {
             NSLog(@"Error while deleting profile image.");
         }
@@ -361,7 +361,7 @@
             self.currentProfilePhoto = nil;
             [self resetProfilePhoto];
             ChatUser *loggedUser = [ChatManager getInstance].loggedUser;
-            [self.imageCache deleteImageFromCacheWithKey:[self.imageCache urlAsKey:[NSURL URLWithString:loggedUser.profileImageURL]]];
+            [self.imageCache deleteImageFromCacheWithKey:[ChatDiskImageCache urlAsKey:[NSURL URLWithString:loggedUser.profileImageURL]]];
         }
     }];
 }

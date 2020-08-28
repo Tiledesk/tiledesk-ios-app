@@ -9,13 +9,13 @@
 #import "HelloUserProfileTVC.h"
 #import "HelloUser.h"
 #import "ChatUser.h"
-#import <DBChooser/DBChooser.h>
 #import "ChatMessagesVC.h"
 #import "ChatUIManager.h"
 #import "ChatManager.h"
 #import "ChatDiskImageCache.h"
 #import "ChatImagePreviewVC.h"
 #import "ChatUtil.h"
+#import "ChatContactsSynchronizer.h"
 
 @interface HelloUserProfileTVC ()
 
@@ -26,12 +26,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = NSLocalizedString(@"profile", nil);
+    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapProfilePhoto:)];
     singleTap.numberOfTapsRequired = 1;
     [self.profilePhotoImageView setUserInteractionEnabled:YES];
     [self.profilePhotoImageView addGestureRecognizer:singleTap];
     
     [self setupProfileImage:self.user.userid];
+    
+    ChatManager *chatm = [ChatManager getInstance];
+    ChatContactsSynchronizer *contacts = chatm.contactsSynchronizer;
+    [contacts addSynchSubscriber:self];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +68,41 @@
         [self sendMessage];
     }
 }
+
+// CONTACT SYNCH PROTOCOL
+
+-(void)synchStart {
+    NSLog(@"SYNCH-START");
+}
+
+- (void)synchEnd {
+    NSLog(@"SYNCH-END");
+}
+
+- (void)contactUpdated:(ChatUser *)oldContact newContact:(ChatUser *)newContact {
+    NSLog(@"Contact updated: %@", oldContact.userId);
+}
+
+- (void)contactImageChanged:(ChatUser *)contact {
+    NSString *profileId = self.user.userid;
+    if ([contact.userId isEqualToString:profileId]) {
+        NSLog(@"Contact image changed: %@", contact.fullname);
+        NSString *imageURL = [ChatManager profileImageURLOf:profileId];
+        [self.imageCache getImage:imageURL completionHandler:^(NSString *imageURL, UIImage *image) {
+            [self setupCurrentProfileViewWithImage:image];
+        }];
+    }
+}
+
+- (void)contactAdded:(ChatUser *)contact {
+    NSLog(@"Contact added: %@", contact.fullname);
+}
+
+- (void)contactRemoved:(ChatUser *)contact {
+    NSLog(@"Contact removed: %@", contact.fullname);
+}
+
+// #- END CONTACT SYNCH PROTOCOL
 
 -(void)sendMessage {
     
@@ -105,7 +150,7 @@
     // try to get image from cache
     NSString *imageURL = [ChatManager profileImageURLOf:profileId];
     NSURL *url = [NSURL URLWithString:imageURL];
-    NSString *cache_key = [self.imageCache urlAsKey:url];
+    NSString *cache_key = [ChatDiskImageCache urlAsKey:url];
     UIImage *cachedProfileImage = [self.imageCache getCachedImage:cache_key];
     [self setupCurrentProfileViewWithImage:cachedProfileImage];
     [self.imageCache getImage:imageURL completionHandler:^(NSString *imageURL, UIImage *image) {
