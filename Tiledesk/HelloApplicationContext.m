@@ -35,7 +35,6 @@ static HelloApplicationContext *sharedInstance = nil;
     [HelloAuth deleteSignedinUser];
     [HelloAuth saveSignedinUser:user];
     self.loggedUser = user;
-    NSLog(@"%@ signed in.", self.loggedUser.username);
 }
 
 @end

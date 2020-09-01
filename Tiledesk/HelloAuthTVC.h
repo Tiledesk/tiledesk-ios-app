@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextLabel;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UILabel *hintLabel;
+@property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 - (IBAction)loginAction:(id)sender;
 - (IBAction)registerAction:(id)sender;
 

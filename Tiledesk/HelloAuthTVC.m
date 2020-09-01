@@ -37,6 +37,11 @@
     NSString *appName = [app.applicationContext.settings objectForKey:@"app-name"];
     self.navigationItem.title = appName;
     self.hintLabel.text = [HelloLocale translate:@"hintLogin"];
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    self.versionLabel.text = [NSString stringWithFormat:@"ver. %@ build %@", version, build];
+    self.appNameLabel.text = [app.applicationContext.settings objectForKey:@"app-name"];
 }
 
 -(void)dismissKeyboard {
@@ -219,6 +224,11 @@
     NSLog(@"forgot password action");
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://console.tiledesk.com/v2/dashboard/#/forgotpsw"]];
 }
+
+- (IBAction)goToWebsite:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.tiledesk.com"]];
+}
+
 
 @end
 

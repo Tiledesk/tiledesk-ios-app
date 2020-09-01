@@ -7,6 +7,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <UserNotifications/UserNotifications.h>
+#import "TiledeskContactsSynchronizer.h"
 
 @class HelloApplicationContext;
 @class MBProgressHUD;
@@ -15,6 +16,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) HelloApplicationContext *applicationContext;
+@property (strong, nonatomic) TiledeskContactsSynchronizer *contactsSynch;
 
 -(void)startPushNotifications;
 @property (nonatomic, copy) void (^fetchCompletionHandler)(UIBackgroundFetchResult result);

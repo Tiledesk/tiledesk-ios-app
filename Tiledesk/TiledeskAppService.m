@@ -25,7 +25,7 @@
 
 + (NSString *)authService {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
-    NSString *host = [dictionary objectForKey:@"auth-service-host"];
+    NSString *host = [dictionary objectForKey:@"tiledesk-api-host"];
     NSString *authService = [dictionary objectForKey:@"auth-service-path"];
     NSString *service = [NSString stringWithFormat:@"%@%@", host, authService];
     NSLog(@"auth service url: %@", service);
@@ -34,8 +34,17 @@
 
 + (NSString *)firebaseCustomTokenUrl {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
-    NSString *host = [dictionary objectForKey:@"auth-service-host"];
+    NSString *host = [dictionary objectForKey:@"tiledesk-api-host"];
     NSString *firebaseAuthService = [dictionary objectForKey:@"firebase-custom-token-path"];
+    NSString *service = [NSString stringWithFormat:@"%@%@", host, firebaseAuthService];
+    NSLog(@"firebaseAuthService url: %@", service);
+    return service;
+}
+
++ (NSString *)contactsUrl {
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
+    NSString *host = [dictionary objectForKey:@"tiledesk-api-host"];
+    NSString *firebaseAuthService = [dictionary objectForKey:@"contacts-path"];
     NSString *service = [NSString stringWithFormat:@"%@%@", host, firebaseAuthService];
     NSLog(@"firebaseAuthService url: %@", service);
     return service;
@@ -77,6 +86,8 @@
                         HelloUser *signedUser = [[HelloUser alloc] init];
                         signedUser.userid = user.userId;
                         signedUser.username = user.email;
+                        signedUser.token = tiledeskToken;
+                        NSLog(@"TOKEN IS %@", signedUser.token);
                         signedUser.firstName = jsonResponse[@"user"][@"firstname"];
                         signedUser.lastName = jsonResponse[@"user"][@"lastname"];
                         signedUser.fullName = [[NSString stringWithFormat:@"%@ %@", signedUser.firstName, signedUser.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -94,7 +105,6 @@
 
 +(void)signinWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *json, NSError *error))callback {
     NSString *auth_url = [TiledeskAppService authService];
-    
     NSDictionary* dict = @{
                            @"email": email,
                            @"password": password
@@ -102,7 +112,6 @@
     NSData *jsonData = [TiledeskAppService dictAsJSON:dict];
     NSURL *url = [NSURL URLWithString:auth_url];
     NSURLSession *session = [NSURLSession sharedSession];
-    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:60.0];
@@ -110,7 +119,6 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
-
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             NSLog(@"Auth ERROR: %@", error);

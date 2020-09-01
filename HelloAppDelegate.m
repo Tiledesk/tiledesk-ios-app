@@ -68,6 +68,10 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
             }
             else {
                 NSLog(@"Authentication success in AppDelegate.");
+                NSLog(@"Tiledesk token: %@", user.token);
+                [context signin:user];
+                self.contactsSynch = [[TiledeskContactsSynchronizer alloc] initWithToken:context.loggedUser.token];
+                [self.contactsSynch synch];
             }
         }];
         

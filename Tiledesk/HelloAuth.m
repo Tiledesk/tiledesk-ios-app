@@ -18,6 +18,7 @@ static NSString *SIGNED_USER_FIRSTNAME = @"firstname";
 static NSString *SIGNED_USER_LASTNAME = @"lastname";
 static NSString *SIGNED_USER_FULLNAME = @"fullname";
 static NSString *SIGNED_USER_EMAIL = @"email";
+static NSString *SIGNED_USER_TOKEN = @"token";
 
 +(HelloUser *)restoreSavedUser {
     NSUserDefaults *userPreferences = [NSUserDefaults standardUserDefaults];
@@ -49,6 +50,7 @@ static NSString *SIGNED_USER_EMAIL = @"email";
     [userPreferences setObject:user.lastName forKey:SIGNED_USER_LASTNAME];
     [userPreferences setObject:user.fullName forKey:SIGNED_USER_FULLNAME];
     [userPreferences setObject:user.email forKey:SIGNED_USER_EMAIL];
+    [userPreferences setObject:user.token forKey:SIGNED_USER_TOKEN];
     [userPreferences synchronize];
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"Password" accessGroup:nil];
     [keychain setObject:user.password forKey:(__bridge NSString *)kSecValueData];

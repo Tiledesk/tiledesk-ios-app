@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -317,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="201" y="783"/>
         </scene>
-        <!--BPP Mobile-->
+        <!--HelloAuthTVC-->
         <scene sceneID="BVL-Z1-UL6">
             <objects>
-                <tableViewController title="BPP Mobile" id="5Cs-F9-AcY" customClass="HelloAuthTVC" sceneMemberID="viewController">
+                <tableViewController title="BPP Mobile" id="5Cs-F9-AcY" userLabel="HelloAuthTVC" customClass="HelloAuthTVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mvp-N6-RL7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,7 +446,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="pqa-KV-L8n"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="Forgot password?"/>
                                                     <connections>
                                                         <action selector="forgotPasswordAction:" destination="5Cs-F9-AcY" eventType="touchUpInside" id="FPT-vh-PkO"/>
@@ -471,6 +471,46 @@
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="nHX-lo-mT2">
+                                        <rect key="frame" x="0.0" y="406" width="375" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nHX-lo-mT2" id="kvQ-Az-AOF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ap name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yg-dB-gCy">
+                                                    <rect key="frame" x="16" y="17" width="343" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver. 0.4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p46-HR-Suu">
+                                                    <rect key="frame" x="16" y="42" width="343" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2U9-fH-kIp">
+                                                    <rect key="frame" x="164" y="80" width="46" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="www.tiledesk.com"/>
+                                                    <connections>
+                                                        <action selector="goToWebsite:" destination="5Cs-F9-AcY" eventType="touchUpInside" id="x6U-WD-zrv"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="p46-HR-Suu" secondAttribute="trailing" id="12j-4r-Cim"/>
+                                                <constraint firstAttribute="topMargin" secondItem="4yg-dB-gCy" secondAttribute="top" constant="-6" id="F9c-Ea-9Js"/>
+                                                <constraint firstItem="2U9-fH-kIp" firstAttribute="centerX" secondItem="kvQ-Az-AOF" secondAttribute="centerX" id="Idb-3J-Jcz"/>
+                                                <constraint firstItem="2U9-fH-kIp" firstAttribute="top" secondItem="kvQ-Az-AOF" secondAttribute="top" constant="80" id="OGS-UH-eVj"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="4yg-dB-gCy" secondAttribute="leading" id="Pa4-RI-w8i"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4yg-dB-gCy" secondAttribute="trailing" id="Zz3-dA-hYa"/>
+                                                <constraint firstItem="p46-HR-Suu" firstAttribute="top" secondItem="kvQ-Az-AOF" secondAttribute="topMargin" constant="31" id="h2M-GZ-7bE"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="p46-HR-Suu" secondAttribute="leading" id="zUF-Ch-2F7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -481,20 +521,22 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Tiledesk" id="Xhc-ET-zOC"/>
                     <connections>
+                        <outlet property="appNameLabel" destination="4yg-dB-gCy" id="dy5-dM-4Nd"/>
                         <outlet property="hintLabel" destination="gS1-F2-cuT" id="OP0-Mk-4aL"/>
                         <outlet property="loginButton" destination="Do5-wE-leq" id="n8P-MX-l5m"/>
                         <outlet property="passwordTextLabel" destination="9e1-Ao-nRl" id="5lq-v0-mtv"/>
                         <outlet property="usernameTextField" destination="RiU-is-UfT" id="sum-9H-Sza"/>
+                        <outlet property="versionLabel" destination="p46-HR-Suu" id="Ap2-Ab-hcA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCa-T0-VPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="779.46026986506752"/>
+            <point key="canvasLocation" x="1081" y="780"/>
         </scene>
-        <!--BPP Mobile-->
+        <!--HelloRegisterTVC-->
         <scene sceneID="e6G-WU-TuP">
             <objects>
-                <tableViewController title="BPP Mobile" id="lWg-on-wFh" customClass="HelloRegisterTVC" sceneMemberID="viewController">
+                <tableViewController title="BPP Mobile" id="lWg-on-wFh" userLabel="HelloRegisterTVC" customClass="HelloRegisterTVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LXE-jg-3he">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -534,7 +576,7 @@
                                                     <rect key="frame" x="48.5" y="9.5" width="278" height="44"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gGC-gQ-ofc">
-                                                            <rect key="frame" x="8" y="12" width="262" height="20"/>
+                                                            <rect key="frame" x="8" y="11.5" width="262" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="262" id="WMR-2k-F5D"/>
                                                             </constraints>
@@ -579,7 +621,7 @@
                                                     <rect key="frame" x="48.5" y="9.5" width="278" height="44"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="99N-9f-d5B">
-                                                            <rect key="frame" x="8" y="12" width="262" height="20"/>
+                                                            <rect key="frame" x="8" y="11.5" width="262" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="262" id="lmd-QE-sMe"/>
                                                             </constraints>
@@ -624,7 +666,7 @@
                                                     <rect key="frame" x="48.5" y="9.5" width="278" height="44"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2n-T3-7Kt">
-                                                            <rect key="frame" x="8" y="12" width="262" height="20"/>
+                                                            <rect key="frame" x="8" y="11.5" width="262" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="262" id="Hnj-Jm-RR4"/>
                                                             </constraints>
@@ -1035,6 +1077,9 @@
             <point key="canvasLocation" x="1966" y="2525"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PDq-Z4-cPX"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="app-icon-mobichat.png" width="134" height="134"/>
         <image name="exiticonbutton.png" width="512" height="512"/>
@@ -1046,7 +1091,4 @@
         <image name="tiledesk-logo-small.png" width="245" height="248"/>
         <image name="user-profile-man.jpg" width="1200" height="1200"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="PDq-Z4-cPX"/>
-    </inferredMetricsTieBreakers>
 </document>

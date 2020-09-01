@@ -6,11 +6,13 @@
 	<string>Tiledesk</string>
 	<key>chat-support</key>
 	<false/>
-	<key>auth-service-host</key>
+	<key>tiledesk-api-host</key>
 	<string>https://api.tiledesk.com</string>
 	<key>auth-service-path</key>
 	<string>/v2/auth/signin</string>
 	<key>firebase-custom-token-path</key>
 	<string>/v2/chat21/firebase/auth/createCustomToken</string>
+	<key>contacts-path</key>
+	<string>/v2/chat21/contacts</string>
 </dict>
 </plist>

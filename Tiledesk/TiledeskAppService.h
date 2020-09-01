@@ -20,6 +20,7 @@
 +(void)signinWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *json, NSError *))callback;
 //+(void)loginForFirebaseTokenWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *json, NSError *error))callback;
 +(void)getFirebaseTokenWithTiledeskToken:(NSString *)tiledeskToken completion:(void (^)(NSString *firebaseToken, NSError *error))callback;
++ (NSString *)contactsUrl;
 //+(void)archiveConversation:(ChatConversation *)conversation completion:(void (^)(NSError *error))callback;
 
 @end
