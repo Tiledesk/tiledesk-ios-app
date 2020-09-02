@@ -19,7 +19,7 @@
 	<key>localization-bundle</key>
 	<string>Chat</string>
 	<key>groups-mode</key>
-	<false/>
+	<true/>
 	<key>tenant</key>
 	<string>tilechat</string>
 	<key>conversations-tabbar-index</key>

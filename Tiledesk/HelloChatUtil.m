@@ -30,17 +30,24 @@
     NSLog(@"CHATUSER.FULLNAME %@ FIRSTNAME: %@", chatUser.fullname, chatUser.firstname);
     ChatManager *chatm = [ChatManager getInstance];
     [chatm startWithUser:chatUser];
-    NSLog(@"Updates user from local contacts synch...");
-    [chatm getContactLocalDB:chatUser.userId withCompletion:^(ChatUser *user) {
-        NSLog(@"user found: %@, user_id: %@, user.firstname: %@", user, user.userId, user.firstname);
-        if (user && user.userId && ![user.firstname isEqualToString:@""]) {
-            chatUser.firstname = user.firstname;
-            chatUser.lastname = user.lastname;
-            app.applicationContext.loggedUser.firstName = user.firstname;
-            app.applicationContext.loggedUser.lastName = user.lastname;
-            [app.applicationContext signin:app.applicationContext.loggedUser];
-        }
-    }];
+    
+    ChatConversationsVC *conversationsVC = [HelloChatUtil getConversationsVC];
+    NSLog(@"conversationsVC: %@ class: %@", conversationsVC, NSStringFromClass([conversationsVC class]));
+    if (conversationsVC) {
+        [conversationsVC initializeWithSignedUser];
+    }
+    
+//    NSLog(@"Updates user from local contacts synch...");
+//    [chatm getContactLocalDB:chatUser.userId withCompletion:^(ChatUser *user) {
+//        NSLog(@"user found: %@, user_id: %@, user.firstname: %@", user, user.userId, user.firstname);
+//        if (user && user.userId && ![user.firstname isEqualToString:@""]) {
+//            chatUser.firstname = user.firstname;
+//            chatUser.lastname = user.lastname;
+//            app.applicationContext.loggedUser.firstName = user.firstname;
+//            app.applicationContext.loggedUser.lastName = user.lastname;
+//            [app.applicationContext signin:app.applicationContext.loggedUser];
+//        }
+//    }];
     // plug the profile view
     [ChatUIManager getInstance].pushProfileCallback = ^(ChatUser *user, ChatMessagesVC *vc) {
         UIStoryboard *profileSB = [UIStoryboard storyboardWithName:@"Tiledesk" bundle:nil];
@@ -59,6 +66,28 @@
     // plug the groups' list view
     // plug the browser view
     // plug the show image view
+}
+
++(ChatConversationsVC *)getConversationsVC {
+    NSInteger chat_tab_index = [ChatUIManager getInstance].tabBarIndex;
+    NSLog(@"chat_tab_index %ld", (long)chat_tab_index);
+    if (chat_tab_index >= 0) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        UITabBarController *tabController = (UITabBarController *)window.rootViewController;
+        NSLog(@"tabController: %@ class: %@", tabController, NSStringFromClass([tabController class]));
+        NSMutableArray *controllers = [[tabController viewControllers] mutableCopy];
+        NSLog(@"controllers: %@ class: %@", controllers, NSStringFromClass([controllers class]));
+//        UINavigationController *conversationsNC = [[ChatUIManager getInstance] getConversationsViewController];
+//        conversationsNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Chat" image:[UIImage imageNamed:@"ic_linear_chat"] selectedImage:[UIImage imageNamed:@"ic_linear_chat"]];
+//        controllers[chat_tab_index] = conversationsNC;
+//        [tabController setViewControllers:controllers];
+        UINavigationController *conversationsNC = (UINavigationController *)controllers[chat_tab_index];
+        NSLog(@"conversationsNC: %@ class: %@", conversationsNC, NSStringFromClass([conversationsNC class]));
+        ChatConversationsVC *conversationsVC = conversationsNC.viewControllers[0];
+        NSLog(@"conversationsVC: %@ class: %@", conversationsVC, NSStringFromClass([conversationsVC class]));
+        return conversationsVC;
+    }
+    return nil;
 }
 
 +(void)firebaseAuthEmail:(NSString *)email password:(NSString *)password completion:(void (^)(FIRUser *fir_user, NSError *))callback {

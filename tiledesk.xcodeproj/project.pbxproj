@@ -741,7 +741,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = T6S5PWWJAJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -759,7 +759,7 @@
 					"$(PROJECT_DIR)/Pods/**",
 					"/Users/andreasponziello/Library/Developer/Xcode/DerivedData/chat21-drnzhrpagjsgyjflnbjmxwfnqwil/Build/Products/Debug-iphoneos/leveldb-library/**",
 				);
-				MARKETING_VERSION = 1.8.4;
+				MARKETING_VERSION = 1.8.5;
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tiledesk.app;
@@ -782,7 +782,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = T6S5PWWJAJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -800,7 +800,7 @@
 					"$(PROJECT_DIR)/Pods/**",
 					"/Users/andreasponziello/Library/Developer/Xcode/DerivedData/chat21-drnzhrpagjsgyjflnbjmxwfnqwil/Build/Products/Debug-iphoneos/leveldb-library/**",
 				);
-				MARKETING_VERSION = 1.8.4;
+				MARKETING_VERSION = 1.8.5;
 				OTHER_LDFLAGS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tiledesk.app;

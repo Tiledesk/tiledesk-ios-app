@@ -53,10 +53,28 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
     NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:settingsPath];
     self.applicationContext.settings = settings;
     
+    // start chat
+    [ChatManager configure];
+    // adding chat controller
+    NSInteger chat_tab_index = [ChatUIManager getInstance].tabBarIndex;
+    if (chat_tab_index >= 0) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        UITabBarController *tabController = (UITabBarController *)window.rootViewController;
+        NSMutableArray *controllers = [[tabController viewControllers] mutableCopy];
+        UINavigationController *conversationsNC = [[ChatUIManager getInstance] getConversationsViewController];
+        conversationsNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Chat" image:[UIImage imageNamed:@"ic_linear_chat"] selectedImage:[UIImage imageNamed:@"ic_linear_chat"]];
+        controllers[chat_tab_index] = conversationsNC;
+        [tabController setViewControllers:controllers];
+        ChatConversationsVC *conversationsVC = conversationsNC.viewControllers[0];
+        [conversationsVC loadViewIfNeeded];
+    } else {
+        NSLog(@"ChatController doesn't exist.");
+    }
+    
     [self initUser];
     // chat config
     [FIRApp configure];
-    [ChatManager configure];
+    
     // initial chat signin
     if ((context.loggedUser)) {
         // initialize signed-in user so I can get chat-history from DB, using offline mode, regardless of a real remote (Firebase) successfull authentication&connection
@@ -77,21 +95,7 @@ static NSString *NOTIFICATION_VALUE_NEW_MESSAGE = @"NEW_MESSAGE";
         
     }
     
-    // adding chat controller
-    NSInteger chat_tab_index = [ChatUIManager getInstance].tabBarIndex;
-    if (chat_tab_index >= 0) {
-        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-        UITabBarController *tabController = (UITabBarController *)window.rootViewController;
-        NSMutableArray *controllers = [[tabController viewControllers] mutableCopy];
-        UINavigationController *conversationsNC = [[ChatUIManager getInstance] getConversationsViewController];
-        conversationsNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Chat" image:[UIImage imageNamed:@"ic_linear_chat"] selectedImage:[UIImage imageNamed:@"ic_linear_chat"]];
-        controllers[chat_tab_index] = conversationsNC;
-        [tabController setViewControllers:controllers];
-        ChatConversationsVC *conversationsVC = conversationsNC.viewControllers[0];
-        [conversationsVC loadViewIfNeeded];
-    } else {
-        NSLog(@"ChatController doesn't exist.");
-    }
+    
     
     // #notificationworkflow
     
