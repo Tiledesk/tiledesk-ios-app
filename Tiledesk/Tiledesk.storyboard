@@ -896,40 +896,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="CIR-5n-5F8">
-                                        <rect key="frame" x="0.0" y="163" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CIR-5n-5F8" id="xUB-Sb-sYf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksw-Of-aHU">
-                                                    <rect key="frame" x="71" y="11.5" width="34.5" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="ENw-IH-ru1"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZR-aN-1q2">
-                                                    <rect key="frame" x="16" y="12.5" width="48" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vZR-aN-1q2" firstAttribute="baseline" secondItem="ksw-Of-aHU" secondAttribute="baseline" id="J3Z-7S-Lmb"/>
-                                                <constraint firstItem="vZR-aN-1q2" firstAttribute="leading" secondItem="xUB-Sb-sYf" secondAttribute="leadingMargin" id="Kri-Zd-mRF"/>
-                                                <constraint firstItem="ksw-Of-aHU" firstAttribute="leading" secondItem="xUB-Sb-sYf" secondAttribute="leading" constant="71" id="Qd0-NT-6fH"/>
-                                                <constraint firstItem="ksw-Of-aHU" firstAttribute="leading" secondItem="vZR-aN-1q2" secondAttribute="trailing" constant="7" id="bIL-Dc-6YE"/>
-                                                <constraint firstItem="ksw-Of-aHU" firstAttribute="centerY" secondItem="xUB-Sb-sYf" secondAttribute="centerY" id="ieL-bE-nJV"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="doF-vG-RDk">
-                                        <rect key="frame" x="0.0" y="207" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="163" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="doF-vG-RDk" id="SZ6-CV-y0Q">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -961,7 +929,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="54" id="Zw9-BR-pCP">
-                                        <rect key="frame" x="0.0" y="251" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="207" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zw9-BR-pCP" id="FpT-8p-iCA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
@@ -1002,7 +970,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Profilo" id="fjV-Y4-HKV"/>
                     <connections>
-                        <outlet property="emailLabel" destination="ksw-Of-aHU" id="gd9-TO-mC4"/>
                         <outlet property="fullNameLabel" destination="C0N-6n-mi6" id="NQp-Lh-pEF"/>
                         <outlet property="profilePhotoImageView" destination="dho-e4-How" id="e8v-lA-pvP"/>
                         <outlet property="useridLabel" destination="389-TR-5J3" id="0cX-wU-hlv"/>
@@ -1078,7 +1045,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PDq-Z4-cPX"/>
+        <segue reference="Alh-iG-yVY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="app-icon-mobichat.png" width="134" height="134"/>

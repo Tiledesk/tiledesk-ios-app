@@ -53,7 +53,7 @@
     [super viewWillAppear:animated];
     self.usernameLabel.text = self.user.username;
     self.useridLabel.text = self.user.userid;
-    self.emailLabel.text = self.user.email;
+//    self.emailLabel.text = self.user.email;
     self.fullNameLabel.text = self.user.displayName;
 }
 
@@ -62,7 +62,7 @@
     // Cell will be deselected by following line.
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 3)
+    if (indexPath.row == 2)
     {
         NSLog(@"Chat with %@", self.user.userid);
         [self sendMessage];
@@ -110,11 +110,9 @@
     
     NSLog(@">>>>>> Back VC Class: %@", NSStringFromClass(backVC.class));
     if([backVC isKindOfClass:[ChatMessagesVC class]]) {
-        NSLog(@"IS MESSAGES!!!!");
+        NSLog(@"Back VC Class is this user's conversation view");
         [self.navigationController popViewControllerAnimated:YES];
         return;
-    } else {
-        NSLog(@"NOT MESSAGES");
     }
     
     ChatUser *chatUser = [[ChatUser alloc] init];

@@ -16,7 +16,7 @@
 @property (strong, nonatomic) HelloUser *user;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *useridLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
